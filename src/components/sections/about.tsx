@@ -25,9 +25,22 @@ const pillars = [
   },
 ];
 
+const focusAreas = [
+  "LLMs & RAG",
+  "NLP",
+  "Computer Vision",
+  "FastAPI",
+  "PyTorch",
+  "LangChain",
+];
+
 export function About() {
   return (
-    <section id="about" className="relative py-20 sm:py-28">
+    <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ambient mesh blobs */}
+      <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 320, height: 320, top: "10%", left: "-8%" }} />
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 280, height: 280, bottom: "5%", right: "-6%", animationDelay: "2s" }} />
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="About"
@@ -35,108 +48,67 @@ export function About() {
           description="I'm an AI/ML Engineer based in Punjab, India, focused on building applied intelligence systems — from retrieval pipelines to multimodal models — that solve real, messy problems."
         />
 
-        <div className="mt-10 grid lg:grid-cols-[1fr_1.3fr] gap-8 items-start">
-          {/* 3D glass-framed photo with rim light */}
+        <div className="mt-10 grid lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
+          {/* text + focus areas */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center lg:justify-start"
+            transition={{ duration: 0.5 }}
+            className="space-y-4 text-base sm:text-lg leading-relaxed text-muted-foreground"
           >
-            <div className="relative">
-              {/* rim-light glow behind the frame */}
-              <div
-                className="pointer-events-none absolute -inset-4 rounded-[2rem] blur-2xl"
-                style={{
-                  background:
-                    "radial-gradient(circle at 30% 30%, oklch(0.6 0.2 300 / 0.45), transparent 60%), radial-gradient(circle at 75% 75%, oklch(0.6 0.18 200 / 0.35), transparent 60%)",
-                }}
-              />
-              <TiltCard
-                max={14}
-                className="rounded-[1.75rem] border border-white/10 bg-card/60 backdrop-blur-xl shadow-2xl"
-              >
-                <div className="relative w-[240px] sm:w-[280px] overflow-hidden rounded-[1.75rem]">
-                  <img
-                    src="/hardik-avatar.jpg"
-                    alt={`${profile.name} — ${profile.title}`}
-                    className="aspect-square w-full object-cover"
-                    draggable={false}
-                  />
-                  {/* color grade + rim light overlay */}
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, oklch(0.6 0.2 300 / 0.18), transparent 40%, oklch(0.6 0.18 200 / 0.18))",
-                      mixBlendMode: "screen",
-                    }}
-                  />
-                  {/* bottom info bar */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5">
-                    <div className="font-semibold text-white tracking-tight">
-                      {profile.name}
-                    </div>
-                    <div className="text-sm text-white/80">{profile.title}</div>
-                    <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur">
-                      <span className="relative flex size-1.5">
-                        <span className="pulse-dot absolute inline-flex size-1.5 rounded-full bg-green-400" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-green-400" />
-                      </span>
-                      {profile.availability}
-                    </div>
-                  </div>
-                </div>
-              </TiltCard>
+            <p>{profile.bio}</p>
+            <p>
+              My recent work spans a{" "}
+              <span className="text-foreground font-medium">
+                hybrid RAG legal assistant
+              </span>{" "}
+              for the Indian Constitution, an{" "}
+              <span className="text-foreground font-medium">
+                explainable fake-news detector
+              </span>{" "}
+              trained on 72k+ articles, and an{" "}
+              <span className="text-foreground font-medium">
+                autonomous e-commerce support agent
+              </span>{" "}
+              with a full audit trail. I'm equally comfortable wiring up
+              FastAPI services, tuning retrieval pipelines, or shipping a
+              clean React UI.
+            </p>
+            <p>
+              Currently open to{" "}
+              <span className="text-foreground font-medium">
+                AI/ML Engineer roles
+              </span>{" "}
+              (remote / hybrid). I learn fast, document everything, and ship.
+            </p>
+
+            {/* focus area chips */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {focusAreas.map((f) => (
+                <span
+                  key={f}
+                  className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
+                >
+                  {f}
+                </span>
+              ))}
             </div>
           </motion.div>
 
-          {/* text + pillars */}
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4 text-base sm:text-lg leading-relaxed text-muted-foreground"
-            >
-              <p>{profile.bio}</p>
-              <p>
-                My recent work spans a{" "}
-                <span className="text-foreground font-medium">
-                  hybrid RAG legal assistant
-                </span>{" "}
-                for the Indian Constitution, an{" "}
-                <span className="text-foreground font-medium">
-                  explainable fake-news detector
-                </span>{" "}
-                trained on 72k+ articles, and an{" "}
-                <span className="text-foreground font-medium">
-                  autonomous e-commerce support agent
-                </span>{" "}
-                with a full audit trail. I'm equally comfortable wiring up
-                FastAPI services, tuning retrieval pipelines, or shipping a
-                clean React UI.
-              </p>
-              <p>
-                Currently open to{" "}
-                <span className="text-foreground font-medium">
-                  AI/ML Engineer roles
-                </span>{" "}
-                (remote / hybrid). I learn fast, document everything, and ship.
-              </p>
-            </motion.div>
-
-            <div className="grid gap-4">
-              {pillars.map((p, i) => (
-                <motion.div
-                  key={p.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="card-lift rounded-2xl border border-border/70 bg-card/60 p-5"
+          {/* pillars */}
+          <div className="grid gap-4">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <TiltCard
+                  max={7}
+                  className="glass-card glow-border rounded-2xl p-5"
                 >
                   <div className="flex items-start gap-3">
                     <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -149,9 +121,9 @@ export function About() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </TiltCard>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

@@ -21,12 +21,14 @@ export function Projects() {
   const others = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative py-20 sm:py-28">
+    <section id="projects" className="relative py-20 sm:py-28 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-grid opacity-40" aria-hidden />
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -z-10 size-[36rem] rounded-full bg-primary/5 blur-3xl"
         aria-hidden
       />
+      <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 300, height: 300, top: "5%", left: "-6%" }} />
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 280, height: 280, bottom: "10%", right: "-5%", animationDelay: "2.5s" }} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
@@ -47,7 +49,7 @@ export function Projects() {
             >
               <TiltCard
                 max={8}
-                className="h-full rounded-3xl border border-border/70 bg-card/70 backdrop-blur shadow-sm overflow-hidden"
+                className="h-full rounded-3xl glass-card glow-border overflow-hidden"
               >
                 <div className="group relative p-6 sm:p-7">
                   {/* glow */}
@@ -135,7 +137,7 @@ export function Projects() {
               <TiltCard
                 max={9}
                 glare={false}
-                className="h-full rounded-2xl border border-border/70 bg-card/60 backdrop-blur shadow-sm"
+                className="h-full rounded-2xl glass-card glow-border"
               >
                 <a
                   href={p.url}

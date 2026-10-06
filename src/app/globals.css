@@ -156,17 +156,17 @@
 /* Grid background pattern */
 .bg-grid {
   background-image:
-    linear-gradient(to right, oklch(from var(--foreground) l c h / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(from var(--foreground) l c h / 0.04) 1px, transparent 1px);
+    linear-gradient(to right, oklch(from var(--primary) l c h / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(from var(--primary) l c h / 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-/* Radial glow */
+/* Radial glow — amber */
 .glow-amber {
   background: radial-gradient(circle at center, oklch(from var(--primary) l c h / 0.18) 0%, transparent 70%);
 }
 
-/* Animated gradient text */
+/* Animated gradient text — amber */
 .gradient-text {
   background: linear-gradient(
     120deg,
@@ -299,5 +299,101 @@
 @keyframes orbit-spin {
   from { transform: rotateZ(0deg) rotateX(70deg); }
   to   { transform: rotateZ(360deg) rotateX(70deg); }
+}
+
+/* ===== 3D-animated section treatments (whole-portfolio cohesion) ===== */
+
+/* Glassmorphic 3D card — used across all sections */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    oklch(from var(--card) l c h / 0.85),
+    oklch(from var(--card) l c h / 0.55)
+  );
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid oklch(from var(--primary) l c h / 0.15);
+  box-shadow:
+    0 1px 0 oklch(from var(--primary) l c h / 0.1) inset,
+    0 8px 32px oklch(0 0 0 / 0.3),
+    0 0 0 1px oklch(from var(--primary) l c h / 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: oklch(from var(--primary) l c h / 0.35);
+  box-shadow:
+    0 1px 0 oklch(from var(--primary) l c h / 0.15) inset,
+    0 12px 40px oklch(0 0 0 / 0.4),
+    0 0 24px oklch(from var(--primary) l c h / 0.15);
+}
+
+/* Gradient mesh background blob — section decorators */
+.mesh-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+}
+.mesh-blob-purple {
+  background: radial-gradient(circle, oklch(0.7 0.17 65), transparent 70%);
+}
+.mesh-blob-cyan {
+  background: radial-gradient(circle, oklch(0.7 0.15 40), transparent 70%);
+}
+.mesh-blob-pink {
+  background: radial-gradient(circle, oklch(0.72 0.13 90), transparent 70%);
+}
+
+/* 3D depth shadow for cards */
+.depth-shadow {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.3),
+    0 4px 12px oklch(0 0 0 / 0.25),
+    0 12px 32px oklch(0 0 0 / 0.2);
+}
+
+/* Glow border on hover (3D rim light feel) */
+.glow-border {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, oklch(from var(--primary) l c h / 0.4), transparent 40%, oklch(0.72 0.15 40 / 0.3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Section gradient divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    oklch(from var(--primary) l c h / 0.3),
+    oklch(0.72 0.15 40 / 0.2),
+    transparent
+  );
+}
+
+/* Floating animation for decorative elements */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+.float-slow {
+  animation: float-slow 8s ease-in-out infinite;
 }
 

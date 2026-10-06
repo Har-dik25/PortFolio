@@ -312,3 +312,22 @@ Stage Summary:
 - Hero now shows a REAL 3D animated developer desk scene (React Three Fiber + Three.js + postprocessing bloom) — matches the reference aesthetic.
 - Photo moved to About section as a 3D glass-framed, rim-lit, tilt-on-hover element (no longer the flat tilted photo the user disliked).
 - Topographic wave background + cinematic 3-point lighting + RGB cycling fans + floating particles + bloom/vignette/chromatic aberration postprocessing all live.
+
+---
+Task ID: PORTFOLIO-UPDATE-7-REVERT
+Agent: main
+Task: Remove the 3D desk scene from hero, remove the 3D avatar image from About, revert colors to amber, redesign the preloader.
+
+Work Log:
+- Reverted src/app/globals.css color system from purple/cyan/pink back to amber palette (both :root light and .dark). Updated glow-amber, gradient-text, mesh-blob-*, glow-border gradient, section-divider, and skill-bar gradient back to amber tones.
+- Removed the 3D desk scene (HeroScene3D) from src/components/sections/hero.tsx → restored the HeroConsole as the right-side element (text left | console right). The hero-scene-3d.tsx, desk-scene-3d.tsx, topo-waves.tsx, avatar-3d.tsx files remain on disk but are no longer imported/rendered.
+- Rebuilt src/components/sections/about.tsx → removed the 3D avatar image (and the raw photo). Now a text-focused layout: bio paragraphs + 6 focus-area chips (LLMs & RAG, NLP, Computer Vision, FastAPI, PyTorch, LangChain) on the left, 3 glass-card pillar cards (Applied AI / Outcome-focused / End-to-end ownership) on the right. No photo/image of a person anywhere in the section.
+- Redesigned src/components/preloader.tsx → removed the 3D cube. New design: an animated "H" monogram that draws itself (SVG pathLength animation) inside a progress ring that fills as progress increases, with an orbiting dot, a rotating dashed outer ring, a shimmer sweep, name + role, and a progress bar + percentage. Amber-themed. Fixed a Framer Motion strokeDashoffset "undefined" warning by adding an explicit initial value.
+- Lint clean. Dev server compiles with no errors. Console clean (no warnings). Agent Browser + VLM verified: preloader shows animated H + progress ring + amber (no 3D cube), hero has no 3D scene (console restored, amber colors), About has no image (text + chips + pillars), 6 focus chips confirmed in DOM.
+
+Stage Summary:
+- 3D desk scene REMOVED from hero → console card restored as the hero visual.
+- 3D avatar image REMOVED from About → text + focus chips + pillar cards only (no photo).
+- Colors REVERTED to amber across the whole portfolio.
+- Preloader REDESIGNED → clean animated "H" monogram + progress ring + orbiting dot (amber, no 3D cube).
+- The 3D R3F components (desk-scene-3d, hero-scene-3d, topo-waves, avatar-3d) remain as files but are unused; can be deleted later if needed.

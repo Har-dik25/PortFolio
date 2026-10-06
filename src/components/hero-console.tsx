@@ -97,7 +97,7 @@ export function HeroConsole() {
   return (
     <TiltCard
       max={14}
-      className="w-full max-w-md rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xl shadow-2xl"
+      className="w-full max-w-md rounded-2xl glass-card glow-border shadow-2xl"
     >
       <div className="overflow-hidden rounded-2xl">
         {/* Title bar */}

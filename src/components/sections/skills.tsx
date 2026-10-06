@@ -39,9 +39,11 @@ function SkillBar({
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-20 sm:py-28">
+    <section id="skills" className="relative py-20 sm:py-28 overflow-hidden">
       {/* subtle bg */}
       <div className="absolute inset-0 -z-10 bg-grid opacity-40" aria-hidden />
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 300, height: 300, top: "15%", right: "-8%" }} />
+      <div className="mesh-blob mesh-blob-pink float-slow" style={{ width: 260, height: 260, bottom: "10%", left: "-6%", animationDelay: "3s" }} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
@@ -61,7 +63,7 @@ export function Skills() {
             >
               <TiltCard
                 max={7}
-                className="h-full rounded-2xl border border-border/70 bg-card/70 backdrop-blur shadow-sm"
+                className="h-full rounded-2xl glass-card glow-border"
               >
                 <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-3">

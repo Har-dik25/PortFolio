@@ -35,7 +35,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28">
+    <section id="contact" className="relative py-20 sm:py-28 overflow-hidden">
       <div
         className="absolute inset-0 -z-10 glow-amber"
         aria-hidden
@@ -46,6 +46,8 @@ export function Contact() {
             "radial-gradient(circle at 50% 60%, black 0%, transparent 55%)",
         }}
       />
+      <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 320, height: 320, top: "15%", left: "-7%" }} />
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 300, height: 300, bottom: "10%", right: "-6%", animationDelay: "2s" }} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
@@ -61,7 +63,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="rounded-3xl border border-border/70 bg-card/60 backdrop-blur p-6 sm:p-8"
+            className="rounded-3xl glass-card glow-border p-6 sm:p-8"
           >
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
               <span className="relative flex size-2">
@@ -143,7 +145,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-3xl border border-border/70 bg-card/60 backdrop-blur p-6 sm:p-8"
+            className="rounded-3xl glass-card glow-border p-6 sm:p-8"
             onSubmit={(e) => {
               e.preventDefault();
               const form = e.currentTarget;

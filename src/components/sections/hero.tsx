@@ -6,7 +6,6 @@ import { ArrowDown, MapPin, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/lib/portfolio-data";
 import { HeroConsole } from "@/components/hero-console";
-import { HeroScene3D } from "@/components/hero-scene-3d";
 
 export function Hero() {
   return (
@@ -30,9 +29,13 @@ export function Hero() {
         className="absolute top-1/4 -left-24 -z-10 size-72 rounded-full bg-primary/10 blur-3xl"
         aria-hidden
       />
+      <div
+        className="absolute bottom-1/4 -right-24 -z-10 size-80 rounded-full bg-primary/5 blur-3xl"
+        aria-hidden
+      />
 
       <div className="mx-auto max-w-6xl w-full px-4 sm:px-6">
-        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-12 items-center">
           {/* Left: text */}
           <div>
             <motion.div
@@ -129,25 +132,16 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: 3D animated desk scene */}
+          {/* Right: 3D functional console */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end"
           >
-            <HeroScene3D />
+            <HeroConsole />
           </motion.div>
         </div>
-
-        {/* Console card full-width below */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 flex justify-center"
-        >
-          <HeroConsole />
-        </motion.div>
       </div>
 
       {/* Scroll cue */}

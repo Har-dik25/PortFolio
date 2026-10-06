@@ -10,7 +10,9 @@ import { education, achievements } from "@/lib/portfolio-data";
 
 export function Education() {
   return (
-    <section id="education" className="relative py-20 sm:py-28">
+    <section id="education" className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 300, height: 300, top: "10%", left: "-7%" }} />
+      <div className="mesh-blob mesh-blob-pink float-slow" style={{ width: 260, height: 260, bottom: "5%", right: "-5%", animationDelay: "2s" }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Education & Achievements"
@@ -45,7 +47,7 @@ export function Education() {
                     </div>
                     <TiltCard
                       max={6}
-                      className="rounded-2xl border border-border/70 bg-card/60 backdrop-blur"
+                      className="rounded-2xl glass-card glow-border"
                     >
                       <div className="p-5">
                         <h4 className="font-semibold leading-snug">
@@ -114,7 +116,7 @@ export function Education() {
                     {a.url ? (
                       <TiltCard
                         max={6}
-                        className="group h-full rounded-2xl border border-border/70 bg-card/60 backdrop-blur"
+                        className="group h-full rounded-2xl glass-card glow-border"
                       >
                         <a
                           href={a.url}
@@ -128,7 +130,7 @@ export function Education() {
                     ) : (
                       <TiltCard
                         max={6}
-                        className="h-full rounded-2xl border border-border/70 bg-card/60 backdrop-blur"
+                        className="h-full rounded-2xl glass-card glow-border"
                       >
                         {Inner}
                       </TiltCard>

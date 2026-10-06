@@ -48,7 +48,7 @@ function CertList({
             <TiltCard
               max={6}
               glare={false}
-              className="group block rounded-xl border border-border/70 bg-card/60 backdrop-blur"
+              className="group block rounded-xl glass-card glow-border"
             >
               <div className="flex items-start gap-3 p-4">
                 <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
@@ -86,8 +86,10 @@ function CertList({
 
 export function Certifications() {
   return (
-    <section id="certifications" className="relative py-20 sm:py-28">
+    <section id="certifications" className="relative py-20 sm:py-28 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-grid opacity-40" aria-hidden />
+      <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 280, height: 280, top: "10%", right: "-6%" }} />
+      <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 260, height: 260, bottom: "8%", left: "-5%", animationDelay: "3s" }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Certificates & Certifications"

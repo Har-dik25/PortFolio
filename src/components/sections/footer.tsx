@@ -7,7 +7,9 @@ import { profile, navLinks } from "@/lib/portfolio-data";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border/60 bg-card/40 backdrop-blur">
+    <footer className="mt-auto border-t border-border/60 bg-card/40 backdrop-blur relative overflow-hidden">
+      <div className="mesh-blob mesh-blob-purple" style={{ width: 300, height: 300, top: "-30%", left: "10%", opacity: 0.2 }} />
+      <div className="mesh-blob mesh-blob-cyan" style={{ width: 260, height: 260, top: "-40%", right: "15%", opacity: 0.2 }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}

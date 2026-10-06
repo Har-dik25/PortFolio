@@ -13,7 +13,8 @@ import { experiences } from "@/lib/portfolio-data";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-20 sm:py-28">
+    <section id="experience" className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 320, height: 320, top: "10%", right: "-8%" }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Experience"
@@ -43,7 +44,7 @@ export function Experience() {
                   <Briefcase className="size-4" />
                 </div>
 
-                <div className="card-lift rounded-2xl border border-border/70 bg-card/60 backdrop-blur p-5 sm:p-6">
+                <div className="card-lift glass-card glow-border rounded-2xl p-5 sm:p-6">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <h3 className="text-lg font-semibold tracking-tight">
