@@ -1,24 +1,42 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
   Github,
   Star,
   Users2,
   ExternalLink,
+  FolderGit2,
+  Layers,
 } from "lucide-react";
 import { SectionHeader } from "@/components/sections/section-header";
 import { DynamicIcon } from "@/components/dynamic-icon";
-import { TiltCard } from "@/components/tilt-card";
 import { projects } from "@/lib/portfolio-data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+type FilterTab = "all" | "solo" | "group";
+
+const tabs: { id: FilterTab; label: string; icon: typeof FolderGit2 }[] = [
+  { id: "all", label: "All Projects", icon: Layers },
+  { id: "solo", label: "Solo", icon: FolderGit2 },
+  { id: "group", label: "Group", icon: Users2 },
+];
 
 export function Projects() {
+  const [active, setActive] = React.useState<FilterTab>("all");
+
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
+
+  const filteredOthers = React.useMemo(() => {
+    if (active === "all") return others;
+    if (active === "solo") return others.filter((p) => !p.collaboration);
+    return others.filter((p) => p.collaboration);
+  }, [active, others]);
 
   return (
     <section id="projects" className="relative py-20 sm:py-28 overflow-hidden">
@@ -34,10 +52,10 @@ export function Projects() {
         <SectionHeader
           eyebrow="Projects"
           title="Selected work"
-          description="A mix of applied AI systems and full-stack builds. Group collaborations are marked with a badge."
+          description="A mix of applied AI systems and full-stack builds. Hover any card to flip it and see the technical details. Group collaborations are marked with a badge."
         />
 
-        {/* Featured */}
+        {/* Featured showcase — large 3D tilt cards */}
         <div className="mt-10 grid lg:grid-cols-2 gap-5 sm:gap-6">
           {featured.map((p, i) => (
             <motion.div
@@ -47,169 +65,292 @@ export function Projects() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <TiltCard
-                max={8}
-                className="h-full rounded-3xl glass-card glow-border overflow-hidden"
-              >
-                <div className="group relative p-6 sm:p-7">
-                  {/* glow */}
-                  <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
-                      <DynamicIcon name={p.icon} className="size-6" />
-                    </div>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                      <Star className="size-3 fill-current" />
-                      Featured
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-xl font-semibold tracking-tight">
-                    {p.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-primary font-medium">
-                    {p.tagline}
-                  </p>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {p.description}
-                  </p>
-
-                  {p.highlights && p.highlights.length > 0 && (
-                    <ul className="mt-4 space-y-1.5">
-                      {p.highlights.map((h, hi) => (
-                        <li
-                          key={hi}
-                          className="flex items-start gap-2 text-sm text-muted-foreground"
-                        >
-                          <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {p.tech.map((t) => (
-                      <Badge
-                        key={t}
-                        variant="secondary"
-                        className="font-mono text-[11px] font-normal"
-                      >
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 flex items-center gap-2 pt-1">
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="rounded-full"
-                    >
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="size-4" />
-                        Code
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </TiltCard>
+              <FeaturedCard project={p} />
             </motion.div>
           ))}
         </div>
 
-        {/* Others grid */}
-        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {others.map((p, i) => (
-            <motion.div
-              key={p.slug}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
+        {/* Filter tabs */}
+        <div className="mt-12 flex flex-wrap items-center gap-2">
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setActive(t.id)}
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                active === t.id
+                  ? "border-primary bg-primary text-primary-foreground shadow-md"
+                  : "border-border bg-card/50 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+              )}
             >
-              <TiltCard
-                max={9}
-                glare={false}
-                className="h-full rounded-2xl glass-card glow-border"
+              <t.icon className="size-3.5" />
+              {t.label}
+              <span
+                className={cn(
+                  "ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums",
+                  active === t.id
+                    ? "bg-primary-foreground/20"
+                    : "bg-muted text-muted-foreground"
+                )}
               >
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex h-full flex-col p-5"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
-                      <DynamicIcon name={p.icon} className="size-5" />
-                    </div>
-                    <ArrowUpRight className="size-4 text-muted-foreground/60 transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-
-                  <h3 className="mt-4 font-semibold tracking-tight leading-snug">
-                    {p.title}
-                  </h3>
-                  <p className="mt-1 text-xs text-primary font-medium">
-                    {p.tagline}
-                  </p>
-                  <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    {p.description}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.slice(0, 4).map((t) => (
-                      <Badge
-                        key={t}
-                        variant="secondary"
-                        className="font-mono text-[10px] font-normal"
-                      >
-                        {t}
-                      </Badge>
-                    ))}
-                    {p.tech.length > 4 && (
-                      <Badge
-                        variant="outline"
-                        className="font-mono text-[10px] font-normal"
-                      >
-                        +{p.tech.length - 4}
-                      </Badge>
-                    )}
-                  </div>
-
-                  <div className="mt-auto pt-3">
-                    {p.collaboration ? (
-                      <div className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[11px] font-medium text-primary">
-                        <Users2 className="size-3" />
-                        Group Project
-                      </div>
-                    ) : (
-                      p.extraLinks && (
-                        <div className="flex flex-wrap gap-2 text-[11px] text-muted-foreground">
-                          {p.extraLinks.map((el) => (
-                            <span
-                              key={el.url}
-                              className="inline-flex items-center gap-1"
-                            >
-                              <ExternalLink className="size-3" />
-                              {el.label}
-                            </span>
-                          ))}
-                        </div>
-                      )
-                    )}
-                  </div>
-                </a>
-              </TiltCard>
-            </motion.div>
+                {t.id === "all"
+                  ? others.length
+                  : t.id === "solo"
+                  ? others.filter((p) => !p.collaboration).length
+                  : others.filter((p) => p.collaboration).length}
+              </span>
+            </button>
           ))}
         </div>
+
+        {/* 3D flip cards grid */}
+        <motion.div layout className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <AnimatePresence mode="popLayout">
+            {filteredOthers.map((p, i) => (
+              <motion.div
+                key={p.slug}
+                layout
+                initial={{ opacity: 0, scale: 0.9, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -16 }}
+                transition={{ duration: 0.35, delay: (i % 3) * 0.05 }}
+              >
+                <FlipCard project={p} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+/* ---------- Featured card (large, 3D tilt + glow) ---------- */
+function FeaturedCard({ project: p }: { project: typeof projects[number] }) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [glare, setGlare] = React.useState({ x: 50, y: 50, o: 0 });
+
+  function handleMove(e: React.PointerEvent<HTMLDivElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    const rx = ((e.clientY - r.top) / r.height - 0.5) * -10;
+    const ry = ((e.clientX - r.left) / r.width - 0.5) * 10;
+    if (ref.current) {
+      ref.current.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+    }
+    setGlare({ x, y, o: 1 });
+  }
+  function handleLeave() {
+    if (ref.current) {
+      ref.current.style.transform = "perspective(900px) rotateX(0) rotateY(0)";
+    }
+    setGlare((g) => ({ ...g, o: 0 }));
+  }
+
+  return (
+    <div
+      ref={ref}
+      onPointerMove={handleMove}
+      onPointerLeave={handleLeave}
+      className="group relative rounded-3xl glass-card glow-border overflow-hidden transition-transform duration-200 will-change-transform"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {/* glare overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 z-20 rounded-3xl transition-opacity duration-300"
+        style={{
+          opacity: glare.o,
+          background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, oklch(1 0 0 / 0.18), transparent 45%)`,
+        }}
+      />
+      {/* glow */}
+      <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="relative p-6 sm:p-7">
+        <div className="flex items-start justify-between gap-3">
+          <div className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
+            <DynamicIcon name={p.icon} className="size-6" />
+          </div>
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+            <Star className="size-3 fill-current" />
+            Featured
+          </span>
+        </div>
+
+        <h3 className="mt-5 text-xl font-semibold tracking-tight">{p.title}</h3>
+        <p className="mt-1 text-sm text-primary font-medium">{p.tagline}</p>
+        <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-4">
+          {p.description}
+        </p>
+
+        {p.highlights && p.highlights.length > 0 && (
+          <ul className="mt-4 space-y-1.5">
+            {p.highlights.slice(0, 3).map((h, hi) => (
+              <li
+                key={hi}
+                className="flex items-start gap-2 text-sm text-muted-foreground"
+              >
+                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
+                {h}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {p.tech.map((t) => (
+            <Badge
+              key={t}
+              variant="secondary"
+              className="font-mono text-[11px] font-normal"
+            >
+              {t}
+            </Badge>
+          ))}
+        </div>
+
+        <div className="mt-6 flex items-center gap-2 pt-1">
+          <Button asChild size="sm" variant="outline" className="rounded-full">
+            <a href={p.url} target="_blank" rel="noopener noreferrer">
+              <Github className="size-4" />
+              View Code
+            </a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- Flip card (3D flip on hover) ---------- */
+function FlipCard({ project: p }: { project: typeof projects[number] }) {
+  const [flipped, setFlipped] = React.useState(false);
+
+  return (
+    <div
+      className="relative h-72 cursor-pointer"
+      style={{ perspective: 1000 }}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped((f) => !f)}
+    >
+      <motion.div
+        className="relative size-full rounded-2xl"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+      >
+        {/* Front */}
+        <div
+          className="glass-card glow-border absolute inset-0 flex flex-col rounded-2xl p-5"
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+        >
+          <div className="flex items-start justify-between">
+            <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
+              <DynamicIcon name={p.icon} className="size-5" />
+            </div>
+            <div className="flex items-center gap-1.5">
+              {p.collaboration && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-primary">
+                  <Users2 className="size-2.5" />
+                  Group
+                </span>
+              )}
+              <ArrowUpRight className="size-4 text-muted-foreground/60" />
+            </div>
+          </div>
+
+          <h3 className="mt-4 font-semibold tracking-tight leading-snug">
+            {p.title}
+          </h3>
+          <p className="mt-1 text-xs text-primary font-medium">{p.tagline}</p>
+          <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            {p.description}
+          </p>
+
+          <div className="mt-auto pt-3 flex flex-wrap gap-1.5">
+            {p.tech.slice(0, 4).map((t) => (
+              <Badge
+                key={t}
+                variant="secondary"
+                className="font-mono text-[10px] font-normal"
+              >
+                {t}
+              </Badge>
+            ))}
+            {p.tech.length > 4 && (
+              <Badge variant="outline" className="font-mono text-[10px] font-normal">
+                +{p.tech.length - 4}
+              </Badge>
+            )}
+          </div>
+
+          {/* hint to flip */}
+          <div className="absolute bottom-3 right-4 font-mono text-[9px] text-muted-foreground/50 uppercase tracking-wider">
+            hover · flip
+          </div>
+        </div>
+
+        {/* Back */}
+        <div
+          className="glass-card glow-border absolute inset-0 flex flex-col rounded-2xl p-5"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <div className="flex items-start justify-between">
+            <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
+              <DynamicIcon name={p.icon} className="size-5" />
+            </div>
+            <Github className="size-4 text-muted-foreground/60" />
+          </div>
+
+          <h3 className="mt-4 font-semibold tracking-tight leading-snug">
+            {p.title}
+          </h3>
+
+          {/* highlights on the back */}
+          {p.highlights && p.highlights.length > 0 ? (
+            <ul className="mt-3 space-y-1.5">
+              {p.highlights.map((h, hi) => (
+                <li
+                  key={hi}
+                  className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed"
+                >
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />
+                  {h}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-3 text-xs text-muted-foreground leading-relaxed line-clamp-6">
+              {p.description}
+            </p>
+          )}
+
+          <div className="mt-auto pt-3 flex items-center justify-between">
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+            >
+              <Github className="size-3.5" />
+              View Code
+              <ExternalLink className="size-3" />
+            </a>
+            {p.extraLinks && (
+              <span className="text-[10px] text-muted-foreground">
+                {p.extraLinks.length} repos
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/lib/portfolio-data";
-import { TrainingDashboard } from "@/components/training-dashboard";
+import { AICore3D } from "@/components/ai-core-3d";
 
 export function Hero() {
   return (
@@ -25,17 +25,35 @@ export function Hero() {
             "radial-gradient(circle at 50% 35%, black 0%, transparent 60%)",
         }}
       />
-      <div
-        className="absolute top-1/4 -left-24 -z-10 size-72 rounded-full bg-primary/10 blur-3xl"
+      {/* 3D parallax background blobs */}
+      <motion.div
+        className="absolute top-1/4 -left-24 -z-10 size-72 rounded-full bg-primary/15 blur-3xl"
+        animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
-      <div
-        className="absolute bottom-1/4 -right-24 -z-10 size-80 rounded-full bg-primary/5 blur-3xl"
+      <motion.div
+        className="absolute bottom-1/4 -right-24 -z-10 size-80 rounded-full bg-primary/8 blur-3xl"
+        animate={{ y: [0, -16, 0], x: [0, -8, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden
+      />
+      {/* floating geometric shapes for 3D depth */}
+      <motion.div
+        className="absolute top-20 right-1/4 -z-10 size-16 rounded-2xl border border-primary/20"
+        animate={{ rotate: [0, 180, 360], y: [0, -12, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        aria-hidden
+      />
+      <motion.div
+        className="absolute bottom-32 left-1/4 -z-10 size-12 rounded-full border border-primary/15"
+        animate={{ rotate: [0, -360], y: [0, 14, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
         aria-hidden
       />
 
       <div className="mx-auto max-w-6xl w-full px-4 sm:px-6">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-12 items-center">
           {/* Left: text */}
           <div>
             <motion.div
@@ -132,14 +150,13 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: 3D animated training dashboard */}
+          {/* Right: 3D animated AI Core */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 24 }}
+            initial={{ opacity: 0, scale: 0.9, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end"
+            transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
           >
-            <TrainingDashboard />
+            <AICore3D />
           </motion.div>
         </div>
       </div>

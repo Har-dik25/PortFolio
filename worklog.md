@@ -353,3 +353,25 @@ Stage Summary:
 - Light mode: GREEN primary (dark mode stays amber).
 - About: duplicate focus chips REMOVED (kept only in Skills).
 - Certifications: REBUILT — 3D tilt cards + animated counters + filter tabs + glass-card design. Fully functional filtering.
+
+---
+Task ID: PORTFOLIO-UPDATE-9
+Agent: main
+Task: Remove training dashboard from hero (add unique 3D AI Core), make preloader better (3D icosahedron), rebuild Projects section (3D flip cards + filter + featured), add more 3D animation to hero.
+
+Work Log:
+- Removed TrainingDashboard from hero → built new AICore3D component (src/components/ai-core-3d.tsx): CSS-based 3D animated "AI Core" — 3 counter-rotating rings on different 3D axes (rotateX 75 / rotateY 75 / rotateX 60+rotateZ 30), central pulsing gradient orb with rotating Brain icon + conic-gradient shimmer sweep, 4 orbiting tech nodes (PyTorch/RAG/LLM/BERT) that counter-rotate to stay upright, 4 floating data particles, ambient glow, mouse parallax tilt (rotateX/rotateY springs). Unique + performant (no WebGL).
+- Updated hero (src/components/sections/hero.tsx): replaced TrainingDashboard with AICore3D; added 3D depth — 2 parallax background blobs with floating motion, 2 floating geometric shapes (rotating rounded square + circle outline) for depth.
+- Rebuilt preloader (src/components/preloader.tsx): bigger (size-56), added 3D rotating wireframe icosahedron (12 vertices + 30 edges, all computed from golden-ratio math + rounded to 2 decimals to avoid hydration mismatch). The icosahedron rotates on X+Y axes. Kept the progress ring, orbiting dot, neural background, and animated "H" monogram at center. Fixed float-precision hydration mismatch by rounding edge transforms (len, midpoint, rotZ, rotY) to 2 decimals.
+- Rebuilt Projects section (src/components/sections/projects.tsx): 
+  • Featured showcase: 2 large 3D tilt cards at top with mouse-tracking perspective + glare overlay
+  • Filter tabs: All Projects / Solo / Group with live count badges (14/9/5)
+  • 3D flip cards: each card flips 180° on hover (rotateY) — front shows icon + title + tagline + description + tech badges + "hover · flip" hint; back shows highlights + "View Code" link. 14 flip cards total.
+  • AnimatePresence + layout animations for smooth filtering
+  • Group projects marked with orange "Group" badge
+- Lint clean. Dev server running, no hydration errors. VLM verified: hero AI Core (8/10 3D feel), preloader with 3D icosahedron + H monogram, projects section with featured cards + filter tabs + 14 flip cards. Filter functionality tested (Group shows 5 projects).
+
+Stage Summary:
+- Hero: training dashboard REMOVED → unique 3D AI Core (rings + orb + orbiting tech nodes + parallax) + 3D depth background.
+- Preloader: REBUILT with 3D rotating wireframe icosahedron + bigger size + glow.
+- Projects: REBUILT with 3D flip cards (hover to flip) + featured showcase + filter tabs (All/Solo/Group) + glass-card 3D style.
