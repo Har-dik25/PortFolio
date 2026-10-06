@@ -255,3 +255,29 @@ Stage Summary:
 - Projects: all 16 descriptions rewritten from actual READMEs.
 - Certificates: all 15 now have one-line topic descriptions.
 - genai-doc-demistifier repo URL 404s — flagged to user; kept with hackathon-name-based description.
+
+---
+Task ID: PORTFOLIO-UPDATE-4-AVATAR
+Agent: main
+Task: Add user's photo (image.jpg) as a 3D animated avatar card to the hero (user chose option A).
+
+Work Log:
+- Analyzed uploaded photo (image.jpg): young man, beard, red plaid shirt, chest-up, square, white bg.
+- Copied photo to /home/z/my-project/public/hardik-avatar.jpg (served by Next.js static).
+- Built src/components/avatar-3d.tsx — a multi-layer 3D parallax avatar card:
+  • Mouse-tracking perspective tilt (rotateX/rotateY via Framer Motion springs)
+  • Parallax depth: photo (translateZ 60px), orbit ring (translateZ -40px), floating tech badges (translateZ 90-120px), status pill (translateZ 120px) — each layer shifts independently with cursor
+  • Continuous idle float (y: 0 → -10 → 0, 6s loop)
+  • Rotating dashed orbit ring (rotateZ 360, 18s loop, rotateX 72 for perspective)
+  • Ambient glow behind photo (pulsing opacity)
+  • Glare highlight following cursor
+  • 4 floating tech badges: Python, LLM, RAG, NLP (each with own float delay)
+  • "available" status pill with pulse dot on top
+  • Name + title bar overlaid at bottom of photo
+- Updated src/components/sections/hero.tsx:
+  • Desktop: 2-col grid (text | avatar), with console card full-width below
+  • Mobile/tablet: avatar hidden, console card shown inline below text (avoids clutter on small screens)
+- Lint clean. Dev server compiles no errors. Agent Browser + VLM verified: avatar renders with photo + badges + status pill + orbit ring + console present, image loads (413×413), mobile correctly hides avatar + shows console.
+
+Stage Summary:
+- 3D animated photo avatar added to hero (desktop), pairing with the terminal console. Mobile gracefully falls back to console-only. Photo served from /hardik-avatar.jpg.

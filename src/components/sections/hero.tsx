@@ -6,6 +6,7 @@ import { ArrowDown, MapPin, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/lib/portfolio-data";
 import { HeroConsole } from "@/components/hero-console";
+import { Avatar3D } from "@/components/avatar-3d";
 
 export function Hero() {
   return (
@@ -35,7 +36,7 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-6xl w-full px-4 sm:px-6">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-14 items-center">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-12 items-center">
           {/* Left: text */}
           <div>
             <motion.div
@@ -130,18 +131,38 @@ export function Hero() {
               <MapPin className="size-4" />
               {profile.location}
             </motion.div>
+
+            {/* Console card shown below text on mobile / tablet */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-8 flex justify-start lg:hidden"
+            >
+              <HeroConsole />
+            </motion.div>
           </div>
 
-          {/* Right: 3D functional console */}
+          {/* Right: 3D animated avatar (desktop) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end"
+            className="hidden lg:flex justify-center"
           >
-            <HeroConsole />
+            <Avatar3D />
           </motion.div>
         </div>
+
+        {/* Console card shown full-width below on desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 hidden lg:flex justify-center"
+        >
+          <HeroConsole />
+        </motion.div>
       </div>
 
       {/* Scroll cue */}
