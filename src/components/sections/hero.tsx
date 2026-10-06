@@ -6,6 +6,8 @@ import { ArrowDown, MapPin, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile, stats } from "@/lib/portfolio-data";
 import { DynamicIcon } from "@/components/dynamic-icon";
+import { TiltCard } from "@/components/tilt-card";
+import { Hero3DCube } from "@/components/hero-3d-cube";
 
 export function Hero() {
   return (
@@ -35,7 +37,7 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-6xl w-full px-4 sm:px-6">
-        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center">
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-14 items-center">
           {/* Left: text */}
           <div>
             <motion.div
@@ -132,34 +134,52 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: stat cards */}
+          {/* Right: 3D cube + tilt stat cards */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="grid grid-cols-2 gap-4"
+            className="flex flex-col items-center gap-6"
           >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
-                className="card-lift relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur p-5 shadow-sm"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary">
-                    <DynamicIcon name={stat.icon} className="size-[1.1rem]" />
-                  </div>
-                </div>
-                <div className="mt-4 text-3xl font-bold tracking-tight">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <Hero3DCube />
+
+            <div className="grid grid-cols-2 gap-4 w-full">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+                >
+                  <TiltCard
+                    max={12}
+                    className="h-full rounded-2xl border border-border/70 bg-card/70 backdrop-blur shadow-sm"
+                  >
+                    <div className="p-5">
+                      <div className="flex items-center justify-between">
+                        <div className="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary">
+                          <DynamicIcon
+                            name={stat.icon}
+                            className="size-[1.1rem]"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-4 text-3xl font-bold tracking-tight">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {stat.label}
+                        {"sub" in stat && stat.sub ? (
+                          <span className="block text-[11px] text-primary/80">
+                            {stat.sub}
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
