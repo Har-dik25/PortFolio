@@ -1,5 +1,5 @@
 // Portfolio data for Hardik — AI/ML Engineer
-// Consolidated from CV + certificate research. Updated per user request.
+// Consolidated from CV + README research + certificate research.
 
 export const profile = {
   name: "Hardik",
@@ -14,14 +14,6 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/hardik8/",
   website: "https://hardik.dev",
 } as const;
-
-// Stats — CGPA moved to Education section; replaced with HackerRank 5★ (from CV achievements)
-export const stats = [
-  { label: "Projects", value: "15+", icon: "FolderGit2" },
-  { label: "Hackathons", value: "3+", icon: "Trophy" },
-  { label: "Years Coding", value: "4+", icon: "Code2" },
-  { label: "HackerRank", value: "5★", sub: "Python & SQL", icon: "Star" },
-] as const;
 
 export type SkillCategory = {
   id: string;
@@ -241,6 +233,7 @@ export type CertItem = {
   date: string;
   icon: string;
   url: string;
+  description: string;
 };
 
 // Column 1 — course / workshop / participation completion certificates
@@ -252,6 +245,8 @@ export const certificates: CertItem[] = [
     date: "Aug '25",
     icon: "Sparkles",
     url: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-31d36878-c879-4417-8e0b-5a8a55a124a5.pdf",
+    description:
+      "Hands-on building of generative AI apps and solutions using no-code platforms, LLM APIs, and prompt engineering.",
   },
   {
     id: "udemy-genai-master",
@@ -260,6 +255,8 @@ export const certificates: CertItem[] = [
     date: "Aug '25",
     icon: "Sparkles",
     url: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-f8a1cf4e-10bc-47c6-9cbe-b52ae86cf5e3.pdf",
+    description:
+      "Comprehensive mastery of generative AI concepts and hands-on use of ChatGPT plus major GenAI tools.",
   },
   {
     id: "udemy-chatgpt",
@@ -268,6 +265,8 @@ export const certificates: CertItem[] = [
     date: "Aug '25",
     icon: "MessageSquare",
     url: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-2e2b095a-2ae5-4178-a40e-531afe50dc0a.pdf",
+    description:
+      "Beginner-friendly introduction to ChatGPT fundamentals and essential AI concepts for everyday productivity use.",
   },
   {
     id: "ibm-hw-os",
@@ -276,6 +275,8 @@ export const certificates: CertItem[] = [
     date: "Oct '24",
     icon: "Cpu",
     url: "https://lnkd.in/p/gy9ctjCx",
+    description:
+      "Computer hardware components, OS architecture, resource management, memory allocation, multitasking, and file management fundamentals.",
   },
   {
     id: "uab-digital-systems",
@@ -284,6 +285,8 @@ export const certificates: CertItem[] = [
     date: "Sep '24",
     icon: "Cpu",
     url: "https://lnkd.in/p/ggsdziVY",
+    description:
+      "Digital electronics fundamentals from logic gates and combinational logic through microprocessor architecture and processor design.",
   },
   {
     id: "accenture-digital-skills-ai",
@@ -292,6 +295,8 @@ export const certificates: CertItem[] = [
     date: "Sep '24",
     icon: "Brain",
     url: "https://lnkd.in/p/gRhSNViH",
+    description:
+      "AI origins and evolution, industry applications, human-AI collaboration, and skills for an AI-driven workplace.",
   },
   {
     id: "infosys-html",
@@ -300,6 +305,8 @@ export const certificates: CertItem[] = [
     date: "Jan '24",
     icon: "Code2",
     url: "https://lnkd.in/p/gW8xw_NQ",
+    description:
+      "Foundational HTML for web page structure: tags, elements, links, images, forms, tables, and semantics.",
   },
   {
     id: "iit-delhi-da-workshop",
@@ -308,6 +315,8 @@ export const certificates: CertItem[] = [
     date: "Jul '25",
     icon: "Award",
     url: "https://lnkd.in/p/gZ6UG53i",
+    description:
+      "Participatory data analytics workshop emphasizing creativity, analytical thinking, and problem-solving applied to real datasets.",
   },
 ];
 
@@ -320,6 +329,8 @@ export const certifications: CertItem[] = [
     date: "Sep '25",
     icon: "Cloud",
     url: "https://www.linkedin.com/posts/hardik8_generative-ai-professional-activity-7388917134468431872-ipzL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQRyuwB0zCPK7scmrw3oCQd02xFX6nHoBk",
+    description:
+      "Oracle OCI Generative AI Professional: foundation models, LLMs on Oracle Cloud, scalable AI pipelines, ethical deployment.",
   },
   {
     id: "oci-ds",
@@ -328,6 +339,8 @@ export const certifications: CertItem[] = [
     date: "Sep '25",
     icon: "ChartLine",
     url: "https://www.linkedin.com/posts/hardik8_data-science-professional-ugcPost-7389534103588659200-GkAy/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQRyuwB0zCPK7scmrw3oCQd02xFX6nHoBk",
+    description:
+      "Oracle OCI Data Science Professional: building, training, and deploying ML models on Oracle Cloud infrastructure.",
   },
   {
     id: "freecodecamp-rwd",
@@ -336,6 +349,8 @@ export const certifications: CertItem[] = [
     date: "2024",
     icon: "MonitorSmartphone",
     url: "https://www.freecodecamp.org/certification/fcc3196ca3e-54e2-4ebc-afa1-8d477e3c60d8/responsive-web-design",
+    description:
+      "HTML, CSS, Flexbox, Grid, accessibility, and responsive web design fundamentals for mobile-first layouts.",
   },
   {
     id: "bcg-forage",
@@ -344,6 +359,8 @@ export const certifications: CertItem[] = [
     date: "Aug '24",
     icon: "Briefcase",
     url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/BCG%20/Tcz8gTtprzAS4xSoK_BCG_YZPnJpJicnio6fwnG_1723047648966_completion_certificate.pdf",
+    description:
+      "BCG data-science simulation: business framing, exploratory data analysis, feature engineering, modeling, and executive recommendations.",
   },
   {
     id: "accenture-na-forage",
@@ -352,6 +369,8 @@ export const certifications: CertItem[] = [
     date: "Aug '24",
     icon: "Briefcase",
     url: "https://lnkd.in/p/ggsMNuxp",
+    description:
+      "Accenture virtual simulation: project understanding, data cleaning and modeling, visualization storytelling, and client presentations.",
   },
   {
     id: "ba-forage",
@@ -360,6 +379,8 @@ export const certifications: CertItem[] = [
     date: "Aug '24",
     icon: "Briefcase",
     url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/British%20Airways/NjynCWzGSaWXQCxSX_British%20Airways_YZPnJpJicnio6fwnG_1723045973325_completion_certificate.pdf",
+    description:
+      "British Airways data-science simulation: web scraping for company insights and predicting customer buying behavior.",
   },
   {
     id: "deloitte-forage",
@@ -368,6 +389,8 @@ export const certifications: CertItem[] = [
     date: "Aug '25",
     icon: "Briefcase",
     url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_YZPnJpJicnio6fwnG_1756043909209_completion_certificate.pdf",
+    description:
+      "Deloitte data-analytics virtual simulation covering practical data analysis techniques and forensic technology investigations.",
   },
 ];
 
@@ -385,128 +408,129 @@ export type Project = {
   highlights?: string[];
 };
 
+// Descriptions grounded in each repo's actual README (fetched via raw.githubusercontent.com).
 export const projects: Project[] = [
   {
     slug: "medinote",
     title: "MediNote — AI Medical Documentation",
-    tagline: "LLM-powered clinical note generation",
+    tagline: "Open-source AI medical copilot (internship project)",
     icon: "Stethoscope",
     featured: true,
     description:
-      "AI-powered medical documentation platform built during my Applied AI internship at Futurense. Leverages LLMs and NLP to automate clinical note generation and streamline healthcare workflows — turning raw clinical input into structured, reviewable documentation with secure REST APIs connecting the frontend, backend, and AI services.",
-    tech: ["LLMs", "NLP", "Python", "React", "REST API", "MongoDB"],
+      "MediMate is an open-source, zero-cost AI medical copilot that listens to doctor-patient conversations and synthesizes structured SOAP notes, suggests ICD-10 codes, recommends diagnostics, and flags drug interactions using RAG grounded in multi-regional clinical guidelines (NICE, CDC, EMA, WHO). It runs HuggingFace Whisper locally for privacy-preserving transcription, with Llama 3 via Groq, LangChain orchestration, and a local ChromaDB vector store of authoritative clinical guidelines. Built during my Applied AI internship at Futurense.",
+    tech: ["React", "Vite", "FastAPI", "LangChain", "ChromaDB", "Whisper", "Llama 3"],
     url: "https://github.com/Har-dik25/MediNote",
     highlights: [
-      "Automated clinical note generation with LLMs + NLP",
-      "Secure RESTful API bridging frontend, backend & AI services",
-      "Shipped end-to-end during Applied AI internship",
+      "Real-time Whisper transcription (local, privacy-preserving)",
+      "Multi-region RAG: NICE / CDC / EMA / WHO guidelines",
+      "Auto SOAP notes + ICD-10 + drug-interaction checks",
     ],
   },
   {
     slug: "rural-healthcare",
     title: "Rural Healthcare Access Gap Mapper",
-    tagline: "GIS decision-support for 640 districts",
+    tagline: "GIS decision-support across 673K+ villages",
     icon: "HeartPulse",
     featured: true,
     description:
-      "National-scale data ingestion workflow consolidating MoHFW, Census, and NFHS-5 surveys across 640 districts and 673K+ villages into an indexed SQLite analytical warehouse. Models spatial healthcare disparities via an Enhanced 2SFCA travel-friction algorithm and a composite Access Gap Index (0–100), decoupling infrastructure deficits from doctor vacancies. Deployed as a 12-module Streamlit decision-support platform.",
-    tech: ["Python", "Streamlit", "SQLite", "GeoPandas", "Plotly", "SciPy", "OSRM"],
+      "National-scale decision-support platform diagnosing rural healthcare access gaps across 36 states/UTs, 640 districts, and 673,638 villages using a composite Access Gap Index (AGI) and a peer-reviewed 2SFCA spatial accessibility model. Exposes 12 interactive Streamlit/Plotly modules — geospatial gap maps, infra-vs-staffing 4-quadrant diagnostics, a PM-ABHIM budget optimizer, NFHS-5 outcome correlations, and a 673k-village drilldown — backed by a SQLite warehouse built from MoHFW RHS, Census, NFHS-5, and OSRM travel data. Grounded in Lancet/BMJ Global Health methodology with 16/16 passing tests.",
+    tech: ["Python", "Streamlit", "Plotly", "SQLite", "pandas", "OSRM", "2SFCA"],
     url: "https://github.com/Har-dik25/Rural-Healthcare-Access-Gap",
     highlights: [
-      "640 districts · 673K+ villages consolidated into SQLite warehouse",
-      "Enhanced 2SFCA travel-friction + composite Access Gap Index (0–100)",
-      "12-module Streamlit platform with GIS choropleth + What-If simulators",
+      "Covers 36 states, 640 districts, 673,638 villages",
+      "12-tab Streamlit dashboard + PM-ABHIM budget optimizer",
+      "Composite AGI + 2SFCA spatial accessibility model",
     ],
   },
   {
     slug: "samvidhan-ai",
     title: "Legal Mind RAG — Samvidhan AI",
-    tagline: "Hybrid RAG for the Indian Constitution",
+    tagline: "Zero-LLM extractive legal intelligence engine",
     icon: "Scale",
     featured: false,
     description:
-      "Full-stack legal research workspace combining ChromaDB dense vector search, BM25 sparse search, and Cross-Encoder reranking over 3,800+ legal statutory chunks for sub-second, high-accuracy retrieval. A Zero-Hallucination Extractive Synthesis Engine delivers verbatim statutory breakdowns, penal liabilities, and automated IPC ↔ BNS cross-mappings with sub-20ms synthesis latency. Built in React + FastAPI with real-time SSE streaming and SQLite-backed session persistence.",
-    tech: ["Python", "FastAPI", "React", "ChromaDB", "BM25", "Sentence-Transformers", "SQLite"],
+      "Samvidhan AI (LegalMind) is a deterministic, zero-LLM extractive legal intelligence engine for the Indian legal corpus — covering BNS/BNSS/BSA 2023, the Constitution of India, IPC/CrPC, and landmark Supreme Court precedents across 3,840+ statutory chunks. It uses hybrid dense (ChromaDB) + sparse (BM25) retrieval fused with Section-Boosted Reciprocal Rank Fusion and a cross-encoder reranker, then synthesizes verbatim statutory answers (0% hallucination) in <0.02s via Server-Sent Events streaming to a React/Vite workspace with interactive IPC↔BNS / CrPC↔BNSS / IEA↔BSA transmuters and knowledge graphs.",
+    tech: ["Python", "FastAPI", "React", "Vite", "ChromaDB", "BM25", "Sentence-Transformers", "SQLite"],
     url: "https://github.com/Har-dik25/Samvidhan_AI",
     highlights: [
-      "Hybrid dense + sparse retrieval with cross-encoder reranking (3,800+ chunks)",
-      "Zero-hallucination extractive synthesis, sub-20ms latency",
-      "React + FastAPI with SSE streaming & legal knowledge graphs",
+      "Zero-LLM extractive synthesis — 0% hallucination, <0.02s",
+      "Hybrid Dense + BM25 retrieval with RRF + cross-encoder reranker",
+      "IPC↔BNS / CrPC↔BNSS / IEA↔BSA cross-statute mapping",
     ],
   },
   {
     slug: "fake-news-detection",
-    title: "Fake News Detection System",
-    tagline: "Explainable deep learning for misinformation",
+    title: "TruthLens AI — Fake News Detection",
+    tagline: "Explainable BERT + BiLSTM ensemble",
     icon: "Newspaper",
     featured: false,
     description:
-      "Deep learning-based fake news detection system trained on 72,000+ news articles using a hybrid BERT and BiLSTM architecture with TF-IDF, POS-tagging, and sentiment features. Includes attention-based explainability, FastAPI inference, Docker deployment, and visual heatmaps for model predictions.",
-    tech: ["Python", "PyTorch", "BERT", "BiLSTM", "NLP", "FastAPI", "XAI"],
+      "TruthLens AI is a production-grade fake-news detection platform combining a hybrid ensemble of BERT (contextual) and BiLSTM with scaled dot-product self-attention (sequential), augmented with classical TF-IDF, POS-ratio, and VADER sentiment features, calibrated at 60% BERT / 40% BiLSTM weighting. Trained on the WELFake dataset (72,134 articles), it ships with a FastAPI backend, a glassmorphic frontend with attention-heatmap visualizations for explainability, and full Docker Compose deployment.",
+    tech: ["PyTorch", "BERT", "BiLSTM", "NLTK", "scikit-learn", "FastAPI", "Docker"],
     url: "https://github.com/Har-dik25/Fake-News-Detection-System",
     highlights: [
-      "72k+ training articles",
-      "Attention-based explainability (XAI)",
-      "Dockerized FastAPI inference service",
+      "Hybrid BERT + BiLSTM-attention ensemble (60/40 weighting)",
+      "Attention heatmaps for token-level explainable AI",
+      "Trained on WELFake 72k+ articles; Dockerized FastAPI",
     ],
   },
   {
     slug: "shopwave-agent",
     title: "ShopWave — Autonomous Support Agent",
-    tagline: "Multi-step e-commerce support automation",
+    tagline: "Zero-LLM rule-based e-commerce agent (NexusDesk)",
     icon: "ShoppingCart",
     featured: false,
     description:
-      "Autonomous e-commerce customer-support resolution system that classifies support tickets, executes multi-step tool chains, validates actions, escalates uncertain cases, and maintains a complete audit trail.",
-    tech: ["Python", "AI Agent", "Automation", "REST API", "Concurrency", "Fault Tolerance"],
+      "A rule-based (zero-LLM) autonomous support resolution agent for the NexusDesk e-commerce platform that processes 20 customer tickets concurrently (8 workers, ~0.13s total) using a 9-tool toolkit, with each ticket requiring ≥3 chained tool calls (fetch → verify → act → reply). It classifies tickets into 8 categories with urgency/flag detection (social engineering, VIP exceptions), resolves refunds/cancellations/replacements, escalates ambiguous cases, and emits a complete audit log. Pure Python 3.10+ standard library — no external dependencies, no API keys, no .env files.",
+    tech: ["Python 3.10+", "ThreadPoolExecutor", "threading", "Concurrency"],
     url: "https://github.com/Har-dik25/ShopWave_Autonomous_Support_Resolution_Agent",
     highlights: [
-      "Intent classification with confidence thresholding",
-      "Multi-step tool execution with validation",
-      "Full audit trail of every action",
+      "Zero-LLM, zero-dependency (pure Python stdlib)",
+      "20 tickets concurrent, 8 workers, ≥3 tool calls per chain",
+      "@resilient_tool retries + full audit log + self-evaluation",
     ],
   },
   {
     slug: "market-sentiment",
     title: "Algorithmic Market Sentiment Platform",
-    tagline: "News-vector correlation engine",
+    tagline: "News-vector correlation + Signal Desk console",
     icon: "TrendingUp",
     featured: false,
     description:
-      "Platform that correlates financial market sentiment with vectorized news embeddings. Ingests live news, encodes articles into a vector space, and surfaces correlation signals between narrative shifts and market movement — enabling sentiment-driven market analysis at scale.",
-    tech: ["Python", "NLP", "Vector Embeddings", "Sentiment Analysis", "Data Engineering"],
+      "An end-to-end data engineering and applied-ML platform that ingests live financial news from RSS / SEC EDGAR / FNSPID / NSE feeds, embeds articles into 384-dim SentenceTransformer vectors, indexes them in Qdrant, and statistically tests whether news-sentiment shifts lead or lag equity price moves via ±5-day cross-correlation with p-values and regime classification. Pairs a FastAPI backend (semantic search, evidence traceability) with a Next.js 'Signal Desk' trading console and a HistGradientBoosting predictor fusing technical indicators (RSI/MACD/Bollinger) with sentiment signals across 25+ tickers.",
+    tech: ["Python", "FastAPI", "Qdrant", "SentenceTransformers", "scikit-learn", "Next.js", "Docker"],
     url: "https://github.com/Har-dik25/Algorithmic-Market-Sentiment-News-Vector-Correlation-Platform",
     highlights: [
-      "News-to-vector embedding pipeline",
-      "Sentiment ↔ market-movement correlation",
-      "Real-time narrative shift detection",
+      "Live news → 384-dim vectors → Qdrant (<300ms p95 search)",
+      "Lead-lag cross-correlation ±5 days with p-values & regime tags",
+      "HistGradientBoosting ML predictor + Next.js Signal Desk console",
     ],
   },
   {
     slug: "ocr-studio",
     title: "OCR Studio",
-    tagline: "Offline client-side OCR to JSON",
+    tagline: "Offline Flask + Tesseract OCR to JSON",
     icon: "Image",
     featured: false,
     description:
-      "Offline OCR web application that converts images into structured JSON entirely on the client side. Built with React and Tesseract to perform text extraction without cloud-based OCR services.",
-    tech: ["OCR", "React.js", "Tesseract", "JavaScript", "JSON"],
+      "OCR Studio is a fully offline Optical Character Recognition web app built with Flask, OpenCV, and Tesseract OCR — users upload PNG/JPG/JPEG images, extract text locally, view it live on the UI, and download structured JSON, all without an internet connection. Features a modern glassmorphism SaaS-style UI, device image-upload support, and a clean Flask/static/templates project layout designed for portfolio showcases.",
+    tech: ["Python", "Flask", "OpenCV", "Tesseract OCR", "Pillow", "NumPy"],
     url: "https://github.com/Har-dik25/OCR-Studio-Offline-Image-to-JSON-Web-App",
     highlights: [
-      "100% client-side (no server)",
-      "Structured JSON output",
-      "Offline-capable",
+      "100% offline OCR — privacy-focused, no internet required",
+      "Flask + OpenCV + Tesseract stack; PNG/JPG/JPEG upload",
+      "Live text render + structured JSON preview & download",
     ],
   },
   {
     slug: "hitcast-spotify",
     title: "HitCast — Spotify Popularity Predictor",
-    tagline: "ML on audio features",
+    tagline: "ML on Spotify audio features",
     icon: "Music",
     featured: false,
     description:
-      "Machine learning system that predicts Spotify track popularity using audio characteristics and regression techniques. Performed data preparation, feature analysis, and predictive modeling.",
-    tech: ["Machine Learning", "Regression", "Python", "Spotify API", "Data Analysis"],
+      "Machine learning system that predicts Spotify track popularity using audio characteristics and regression techniques. Performs data preparation, feature analysis on Spotify audio features, and predictive modeling to surface which acoustic traits correlate with popularity. (Project README currently marked in-progress.)",
+    tech: ["Python", "Machine Learning", "Regression", "Spotify API"],
     url: "https://github.com/Har-dik25/HitCast-Spotify-Track-Popularity-Predictor",
     highlights: [
       "Spotify Web API ingestion",
@@ -516,72 +540,72 @@ export const projects: Project[] = [
   },
   {
     slug: "transport-delay",
-    title: "Public Transport Delay × Weather",
-    tagline: "Data analysis of disruption patterns",
+    title: "TransitAI — Transport Delay × Weather",
+    tagline: "NYC MTA bus-delay ML with SHAP explainability",
     icon: "Bus",
     featured: false,
     description:
-      "Data analysis pipeline combining public transport delay data with weather events to identify disruption patterns and relationships between environmental conditions and transportation performance.",
-    tech: ["Data Engineering", "Pandas", "Python", "Data Analysis", "Visualization"],
+      "TransitAI is an end-to-end ML project that analyzes and predicts NYC MTA bus delays by enriching simulated trip records with historical weather (Open-Meteo) and city events (concerts, marathons), then training Random Forest and Gradient Boosting models to predict both delay occurrence and delay minutes. Exposes insights through a Streamlit dashboard with overview KPIs, an interactive data explorer, a custom plotter, a 'What-If' trip predictor, SHAP-based explainable-AI insights, and a 7-day forecast with hypothetical-snowstorm injection. Full pipeline is reproducible via a Makefile.",
+    tech: ["Python", "Streamlit", "scikit-learn", "Plotly", "pandas", "SHAP"],
     url: "https://github.com/Har-dik25/Public-Transport-Delays-with-Weather-Events",
     highlights: [
-      "Multi-source data joining",
-      "Pattern discovery in delay + weather",
-      "Reusable Pandas pipeline",
+      "Random Forest + Gradient Boosting on NYC MTA bus data",
+      "Streamlit dashboard: What-If predictor + SHAP explanations",
+      "Weather + city-event enrichment; Makefile-driven pipeline",
     ],
   },
   {
     slug: "hrms",
-    title: "HRMS — Backend & Frontend",
+    title: "Nexus HR Core — HRMS",
     tagline: "Full-stack HR management system",
     icon: "Users",
     featured: false,
     description:
-      "Full-stack Human Resource Management System covering employee, payroll, and attendance workflows through a React frontend, RESTful backend services, and MongoDB-based data management.",
-    tech: ["Full Stack", "React.js", "MongoDB", "JavaScript", "REST API"],
+      "Nexus HR Core is a full-stack Human Resource Management System split into a FastAPI backend (PostgreSQL via Supabase, JWT auth, Pydantic v2 schemas, RBAC for Admin/Employee, Dockerized) and a React 18 + Vite + Tailwind frontend (separate repo) with role-based dashboards, Recharts visualizations, glassmorphism design, and dark/light mode. The backend manages employees, departments, attendance check-in, and leave requests/approvals; the frontend provides Admin analytics/approvals and Employee check-in/history views with real-time optimistic UI updates.",
+    tech: ["FastAPI", "Supabase", "PostgreSQL", "JWT", "Docker", "React", "Vite", "Tailwind", "Recharts"],
     url: "https://github.com/Har-dik25/hrms-backend",
     extraLinks: [
       { label: "Backend", url: "https://github.com/Har-dik25/hrms-backend" },
       { label: "Frontend", url: "https://github.com/Har-dik25/hrms-frontend" },
     ],
     highlights: [
-      "Modular React + REST split",
-      "MongoDB persistence",
-      "Two production-ready repos",
+      "FastAPI + Supabase Postgres backend with RBAC + JWT",
+      "React/Vite/Tailwind frontend; Recharts dashboards, glass UI",
+      "Endpoints: auth, employees, attendance, leave request/approve",
     ],
   },
   {
     slug: "ums-replica",
-    title: "UMS Replica",
-    tagline: "University management system",
+    title: "CampusFlow — UMS Replica",
+    tagline: "Full-stack university management system",
     icon: "GraduationCap",
     featured: false,
     description:
-      "Full-stack University Management System replica with modules for students, faculty, courses, and administrative workflows. Developed a responsive React frontend integrated with MongoDB.",
-    tech: ["Full Stack", "React.js", "MongoDB", "JavaScript"],
+      "CampusFlow is a full-stack University Management System built with FastAPI (Python 3.13) and React 19 (Vite), backed by Supabase (PostgreSQL) with JWT-based role auth (local SQLite for users). It covers students, faculty/staff, academics (departments/programs/courses), attendance/timetables, exams/results, finance/fees, library, and hostels — exposing 109 API endpoints across 50+ database tables and 13 routers. The React frontend ships with 18 route pages and a reusable component architecture.",
+    tech: ["React", "Vite", "FastAPI", "Supabase", "PostgreSQL", "JWT", "SQLite"],
     url: "https://github.com/Har-dik25/UMS-replica",
     highlights: [
-      "Multi-role workflows",
-      "Responsive React UI",
-      "MongoDB integration",
+      "109 API endpoints across 50+ tables (13 routers)",
+      "Modules: students, faculty, exams, finance, library, hostels",
+      "JWT role-based auth + Supabase Postgres; 18 React pages",
     ],
   },
   // ---- Group / collaboration projects (same grid, marked with a badge) ----
   {
     slug: "ai-traffic-congestion",
     title: "AI Traffic Congestion Analysis",
-    tagline: "Computer vision for traffic flow",
+    tagline: "ML congestion prediction on AWS Lambda",
     icon: "TrafficCone",
     featured: false,
     description:
-      "Computer vision and deep learning system for analyzing traffic footage to identify congestion levels and forecast traffic flow. Uses video-based visual analysis to extract traffic patterns.",
-    tech: ["Computer Vision", "OpenCV", "Deep Learning", "Python", "Video Analytics"],
+      "A group project (with Mehtab Singh, Nakala Harshavardhan Reddy, and Akshith Gupta) that analyzes traffic congestion patterns using historical data from the TOMTOM API and INRIX reports, then trains an ML model deployed on AWS Lambda to predict congestion levels. Insights are visualized as heatmaps and historical trends in a Flask-based dashboard, with travel recommendations derived from congestion patterns. The data pipeline runs on Amazon EC2.",
+    tech: ["Python", "Amazon EC2", "AWS Lambda", "Matplotlib", "Seaborn", "Flask", "TOMTOM API"],
     url: "https://github.com/Har-dik25/AI-Traffic-Congestion-Analysis",
     collaboration: true,
     highlights: [
-      "OpenCV-based video pipeline",
-      "Deep-learning congestion classification",
-      "Short-horizon flow forecasting",
+      "ML congestion prediction deployed on AWS Lambda",
+      "Data sources: TOMTOM API + INRIX reports; EC2 compute",
+      "Flask dashboard with heatmaps + travel recommendations",
     ],
   },
   {
@@ -591,31 +615,31 @@ export const projects: Project[] = [
     icon: "Eye",
     featured: false,
     description:
-      "AI-powered OCR application that extracts text from images and PDF documents using Google Gemini's multimodal capabilities. Built a serverless Python backend with Azure Functions.",
-    tech: ["Google Gemini", "Azure Functions", "OCR", "Python", "REST API", "Cloud"],
+      "A serverless OCR system (collaboration with Vansh Arora) that extracts text from JPG, PNG, and PDF files using Google Gemini's multimodal AI, exposed via an Azure Functions (Python) REST backend with a modern HTML/Tailwind CSS/JavaScript frontend. Features drag-and-drop file upload, copy/download of extracted text, and secure API-key handling — the Gemini key is stored only in Azure Function App settings, never exposed to the frontend or repo.",
+    tech: ["Azure Functions", "Google Gemini", "HTML5", "Tailwind CSS", "JavaScript", "REST"],
     url: "https://github.com/vansharora156/Gemini-Ocr-Azure",
     collaboration: true,
     highlights: [
-      "Serverless architecture (Azure Functions)",
-      "Gemini multimodal text + structure extraction",
-      "Collaboration project",
+      "Serverless: Azure Functions backend + Google Gemini AI",
+      "Drag-and-drop JPG/PNG/PDF upload; copy/download text",
+      "Secure API-key handling (backend-only Gemini calls)",
     ],
   },
   {
     slug: "solar-forecasting",
     title: "Solar Power Generation Forecasting",
-    tagline: "ML forecasting for renewable energy",
+    tagline: "scikit-learn + XGBoost + LightGBM ensemble",
     icon: "Sun",
     featured: false,
     description:
-      "Machine learning system for forecasting solar power generation using historical power data, weather information, and temporal features. Deployed the prediction workflow through Streamlit.",
-    tech: ["Python", "Machine Learning", "Regression", "Ensemble Learning", "Streamlit", "Forecasting"],
+      "A solar power generation forecasting project (collaboration) that uses an ensemble of regression models — scikit-learn, XGBoost, and LightGBM — trained on historical power and weather data, exposed through a Streamlit web UI. Features weather/time-based feature engineering and ensemble modeling for improved accuracy and stability, with datasets bundled in the repository and the model regenerable via the training script.",
+    tech: ["Python", "scikit-learn", "XGBoost", "LightGBM", "pandas", "NumPy", "Streamlit"],
     url: "https://github.com/LeviAckermanZ9/solar-power-generation-forecasting",
     collaboration: true,
     highlights: [
-      "Ensemble regression for robust predictions",
-      "Weather + temporal feature engineering",
-      "Streamlit deployment",
+      "Ensemble of scikit-learn + XGBoost + LightGBM regressors",
+      "Streamlit UI; weather + time-based features",
+      "Datasets bundled in /model; model regenerable via training",
     ],
   },
   {
@@ -625,7 +649,7 @@ export const projects: Project[] = [
     icon: "FileText",
     featured: false,
     description:
-      "Generative-AI application built for the Google Gen AI Exchange Hackathon that demystifies complex documents — summarizing, explaining, and answering questions over dense PDFs using Google's GenAI stack. Turns opaque legal/technical paperwork into navigable, queryable knowledge.",
+      "A generative-AI application built for the Google Gen AI Exchange Hackathon (collaboration) that demystifies complex documents — summarizing, explaining, and answering questions over dense PDFs using Google's GenAI stack. Turns opaque legal/technical paperwork into navigable, queryable knowledge.",
     tech: ["Google GenAI", "Generative AI", "RAG", "Python", "Document AI"],
     url: "https://github.com/JXPJXT/GoogleGenAiExchange-GenAI-Document-Demistifier",
     collaboration: true,
@@ -638,18 +662,18 @@ export const projects: Project[] = [
   {
     slug: "kaggle-backpack",
     title: "Kaggle Backpack Price Prediction",
-    tagline: "Tabular ML competition workflow",
+    tagline: "Tabular ML competition (Feb 2025)",
     icon: "Briefcase",
     featured: false,
     description:
-      "Machine learning regression project developed for the Kaggle Tabular Playground Series to predict backpack prices from product attributes. Performed EDA, feature engineering, and RMSE evaluation.",
-    tech: ["Python", "Machine Learning", "Regression", "Feature Engineering", "Kaggle", "RMSE"],
+      "A Kaggle Tabular Playground Series submission (Feb 2025, collaboration with Japjot & Gurkirat) that predicts backpack prices from tabular attributes, optimized for RMSE. The notebook walks through EDA, data cleaning, feature engineering (transformations + combination testing), and regression-model experimentation with hyperparameter tuning via cross-validation, using XGBoost as the primary model alongside pandas, NumPy, scikit-learn, Matplotlib, and Seaborn.",
+    tech: ["Python", "pandas", "NumPy", "scikit-learn", "XGBoost", "Matplotlib", "Seaborn"],
     url: "https://github.com/JXPJXT/Kaggle-Backpack-Prediction-Challenge",
     collaboration: true,
     highlights: [
-      "EDA-driven feature engineering",
-      "RMSE-optimized model selection",
-      "Collaboration project",
+      "Kaggle Tabular Playground Series (Feb 2025) — RMSE on price",
+      "EDA + feature engineering + XGBoost with CV tuning",
+      "Group project (Japjot, Gurkirat, Hardik)",
     ],
   },
 ];

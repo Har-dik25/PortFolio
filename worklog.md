@@ -187,3 +187,71 @@ Work Log:
 Stage Summary:
 - Portfolio fully updated with CV data, all requested projects, deduped certificates in 2 parallel columns, 3D animated tilt cards + hero cube, achievements + schools added.
 - One user-ambiguity resolved by decision: replaced CGPA stat card with HackerRank 5★ (CGPA now lives in Education section). User can correct if a different stat was intended.
+
+---
+Task ID: R2-CERT-DESCRIPTIONS
+Agent: general-purpose
+Task: Examine 15 certificates and write one-line descriptions
+
+Work Log:
+- Read /home/z/my-project/worklog.md for prior CERT-RESEARCH context; confirmed reuse of existing /tmp/ assets (cert1-6.json, forage_*.pdf, udemy*_page-1.png, cert_hackathon.json, cert_fcc.json).
+- Extracted topic details from each LinkedIn description body in /tmp/cert1-6.json + cert_hackathon.json (each post contains a "Key Takeaways" or skills list in the description text).
+- Ran pdf.py extract.text on /tmp/forage_bcg.pdf, /tmp/forage_ba.pdf, /tmp/forage_9pbt.pdf — all returned text (493/439/382 chars). BCG tasks: Business Understanding & Hypothesis Framing, EDA, Feature Engineering & Modelling, Findings & Recommendations. BA tasks: Web scraping for company insights, Predicting customer buying behaviour. Deloitte (9PBT) tasks: Data analysis, Forensic technology (signed by Tina McCreery, Deloitte CHRO).
+- Fetched OCI GenAI + OCI DS LinkedIn posts (NOT in prior research) via `z-ai function -n page_reader` → /tmp/certdesc_oci_genai.json + /tmp/certdesc_oci_ds.json. Parsed descriptions: OCI GenAI = foundation models/LLMs on Oracle Cloud, scalable AI pipelines, ethical secure deployment; OCI DS = leveraging OCI for advanced data-science workflows from model building to deployment.
+- Ran `z-ai vision` on existing Udemy PNGs (/tmp/udemy1_page-1.png, udemy2_page-1.png, udemy3_page-1.png) to extract course topic summaries — saved to /tmp/udemy1_vlm.json, udemy2_vlm.json, udemy3_vlm.json.
+- For freeCodeCamp RWD (auth-gated), used known curriculum: HTML, CSS, Flexbox, Grid, accessibility, responsive web design fundamentals.
+- Authored 12-20 word descriptions for all 15 certificates (verified word counts: range 13-16 words each). Descriptions focus on actual topics/skills covered (extracted from PDF task lists, LinkedIn post bodies, VLM OCR of certificate images, and known curricula), not just title restatement.
+- Wrote JSON array to /tmp/cert-descriptions.json (15 entries, all ids present, validated with python3 json.load + word-count check).
+
+Stage Summary:
+- /tmp/cert-descriptions.json contains 15 entries with one-line topic descriptions (all within 12-20 word constraint).
+- Sources used per cert: LinkedIn post bodies (IBM HW/OS, UAB Digital Systems, Accenture FutureLearn AI, Accenture NA Forage, BA Forage, Infosys HTML, IIT Delhi workshop, OCI GenAI, OCI DS), PDF text extraction (BCG Forage, BA Forage, Deloitte Forage), VLM OCR of certificate images (Udemy x3), and known curriculum (freeCodeCamp RWD).
+- Descriptions emphasize concrete skills (e.g., "logic gates... microprocessor architecture", "web scraping... predicting customer buying behavior", "data analysis techniques and forensic technology investigations") rather than repeating titles.
+
+---
+Task ID: R1-README-RESEARCH
+Agent: general-purpose
+Task: Fetch README for 16 GitHub projects and write accurate descriptions
+
+Work Log:
+- Read prior worklog.md to absorb CERT-RESEARCH + PORTFOLIO-UPDATE-2 context (16 projects already wired into src/lib/portfolio-data.ts but with descriptions that may not be README-grounded).
+- Built a bash loop fetching each README via curl in branch/file fallback order: main/README.md -> master/README.md -> main/readme.md -> main/README.rst -> readme.txt. Result: 15/17 raw READMEs fetched successfully (both hrms-backend AND hrms-frontend fetched separately; combined into one hrms entry per task instructions).
+- HitCast-Spotify README was technically found (HTTP 200) but contains only "# HitCast / In Progress" (26 bytes) - flagged as minimal, description derived from repo name with "(based on repo metadata)" tag.
+- genai-doc-demistifier: all raw URL variants returned 404. GitHub REST API also returned 404 ("Not Found"). Verified by scraping JXPJXT's full public repo list (pages 1 + 2, 50 repos total) - no "Demistifier", "Demystifier", "GenAI", or "Exchange" repo exists on that account. z-ai page_reader also returned "warning: Target URL returned error 404: Not Found". Flagged readme_found=false; description derived from repo name only.
+- For solar-forecasting and kaggle-backpack (READMEs did not explicitly list tech stacks), supplemented by fetching requirements.txt (solar) and parsing code.ipynb imports (kaggle) to extract accurate tech: solar-forecasting -> scikit-learn 1.4.2, XGBoost 2.0.3, LightGBM 4.6.0, pandas, NumPy, joblib, Streamlit; kaggle-backpack -> pandas, NumPy, scikit-learn, XGBoost (XGBRegressor), Matplotlib, Seaborn, Jupyter.
+- For each README, read the full content via the Read tool and wrote a 2-3 sentence description grounded ONLY in what the README explicitly states (architecture, datasets, features, models, deployment options). No invented features.
+- Captured 3 short highlights (5-10 words each) per project, pulled verbatim or near-verbatim from each README's "Key Features" / "Feature Highlights" / "Capabilities" section.
+- Captured tech stack as a comma-separated list, sourced from each README's "Tech Stack" table where present; for READMEs without an explicit table (solar, kaggle, hrms-frontend), inferred from framework badges, requirements.txt, or notebook imports.
+- Wrote final deliverable to /tmp/project-readmes.json (16 entries, valid JSON).
+
+Stage Summary:
+- 15/16 READMEs successfully fetched and parsed (medinote, rural-healthcare, market-sentiment, samvidhan-ai, fake-news-detection, shopwave-agent, hitcast-spotify [minimal], ocr-studio, transport-delay, ums-replica, hrms [backend+frontend], ai-traffic-congestion, gemini-ocr-azure, solar-forecasting, kaggle-backpack).
+- 1/16 README unrecoverable: genai-doc-demistifier (repo returns 404 - does not exist on JXPJXT's GitHub account). Flagged readme_found=false; main agent should either correct the URL or remove the project from the portfolio.
+- 1/16 README is minimal: hitcast-spotify contains only "# HitCast / In Progress". Description is name-based with metadata tag.
+- Notable name mismatches discovered (informational only - the README content is accurate to the actual repos): the repo for "shopwave-agent" is actually named "ShopWave_Autonomous_Support_Resolution_Agent" but the README titles it "NexusDesk Autonomous Support Resolution Agent" (NexusDesk = platform, ShopWave = repo name). Similarly the "medinote" repo README titles the product "MediMate" (MediNote = repo name, MediMate = product). The "ums-replica" repo README titles the product "CampusFlow". These are accurate per-README descriptions; the main agent should decide whether to surface the product names or repo names in portfolio UI.
+- All descriptions strictly README-grounded; no features invented. Tech stacks taken directly from README tech-stack tables or pinned requirements files; no inference beyond what's documented in the repo.
+
+---
+Task ID: PORTFOLIO-UPDATE-3
+Agent: main
+Task: Remove 3D cube + stat cards from hero (add new 3D functional element), add preloader, remove socials from footer (keep in navbar/contact), make README-grounded project descriptions + one-line certificate descriptions, make more 3D/unique.
+
+Work Log:
+- Dispatched R1-README-RESEARCH subagent → fetched README for 16 repos via raw.githubusercontent.com. 15/16 found; genai-doc-demistifier repo 404s (kept with name-based description). Got accurate descriptions + tech stacks + highlights (incl. discoveries: MediNote=MediMate, ShopWave=NexusDesk, UMS=CampusFlow, FakeNews=TruthLens AI, Transport=TransitAI).
+- Dispatched R2-CERT-DESCRIPTIONS subagent → one-line descriptions for all 15 certificates (fetched LinkedIn posts, Forage/Udemy PDFs via VLM OCR).
+- Built src/components/hero-console.tsx — a 3D glassmorphic "engineer status console" replacing the cube+stats: live IST clock (updates every second), looping typewriter running shell commands (whoami/cat focus.txt/status/location), traffic-light title bar, status footer (online/uptime/open-to-work), 3D tilt + glare. Functional + unique.
+- Updated src/components/sections/hero.tsx — removed 3D cube (Hero3DCube) + 4 stat cards (stats grid + TiltCard + DynamicIcon imports); added HeroConsole in right column.
+- Built src/components/preloader.tsx — full-screen 3D loading overlay: spinning 3D cube (H/AI/ML/</>/★/◆ faces) + orbiting ring + monogram + animated progress bar (0→100%) + "loading workspace" label. Fades out on window load (or 2.6s fallback).
+- Wired Preloader into src/app/layout.tsx (inside ThemeProvider, above children).
+- Rewrote src/components/sections/footer.tsx — removed GitHub/LinkedIn/Email social icon section entirely; kept brand + Navigate links + "Based in" location/availability block + "Start a conversation" CTA + copyright + Back-to-top. Socials remain in hero CTAs + contact section.
+- Rewrote src/lib/portfolio-data.ts — removed unused `stats` export; added `description` field to CertItem type + populated all 15 certificate descriptions; updated all 16 project descriptions/tech/highlights with README-grounded content.
+- Updated src/components/sections/certifications.tsx — render one-line `c.description` between title and issuer/date.
+- Lint clean. Dev server compiles with no errors. Agent Browser + VLM verified: cube+stats gone, console present with live clock (15:14:06→15:14:09 confirmed updating), preloader shows then fades, footer has no socials, certs show descriptions, project descriptions README-accurate (SOAP notes/673K villages visible), mobile responsive.
+
+Stage Summary:
+- Hero: 3D cube + 4 stat cards REMOVED → replaced with functional 3D AI console (live IST clock + typing animation + tilt).
+- Preloader added (3D cube + progress bar, fades on load).
+- Footer: socials removed (kept in hero + contact); redesigned clean.
+- Projects: all 16 descriptions rewritten from actual READMEs.
+- Certificates: all 15 now have one-line topic descriptions.
+- genai-doc-demistifier repo URL 404s — flagged to user; kept with hackathon-name-based description.

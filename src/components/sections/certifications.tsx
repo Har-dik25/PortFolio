@@ -33,7 +33,7 @@ function CertList({
           <p className="text-[11px] text-muted-foreground">{accentLabel}</p>
         </div>
       </div>
-      <div className="space-y-3 max-h-[640px] overflow-y-auto pr-1 sm:pr-2">
+      <div className="max-h-[640px] overflow-y-auto pr-1 sm:pr-2 space-y-3">
         {items.map((c, i) => (
           <motion.a
             key={c.id}
@@ -61,7 +61,11 @@ function CertList({
                     </h4>
                     <ExternalLink className="size-3.5 shrink-0 text-muted-foreground/50 transition-colors group-hover:text-primary" />
                   </div>
-                  <div className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-muted-foreground">
+                  {/* one-line description of what it covers */}
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                    {c.description}
+                  </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-muted-foreground">
                     <span className="font-medium text-foreground/80">
                       {c.issuer}
                     </span>
@@ -88,7 +92,7 @@ export function Certifications() {
         <SectionHeader
           eyebrow="Certificates & Certifications"
           title="Credentials & continuous learning"
-          description="Two parallel tracks: course/workshop completion certificates, and professional certifications plus industry virtual job simulations."
+          description="Two parallel tracks: course/workshop completion certificates, and professional certifications plus industry virtual job simulations. Each with a one-line summary of what it covers."
         />
 
         <div className="mt-10 grid lg:grid-cols-2 gap-8">

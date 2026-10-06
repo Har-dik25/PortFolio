@@ -2,14 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { profile, navLinks } from "@/lib/portfolio-data";
 
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-border/60 bg-card/40 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}
           <div>
             <Link
@@ -33,7 +33,7 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Navigate
             </h4>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <Link
@@ -47,42 +47,30 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Socials */}
+          {/* Quick info (no social icons — those live in the navbar + contact section) */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Connect
+              Based in
             </h4>
-            <div className="mt-3 flex items-center gap-2">
-              {[
-                { icon: Github, url: profile.github, label: "GitHub" },
-                { icon: Linkedin, url: profile.linkedin, label: "LinkedIn" },
-                { icon: Mail, url: `mailto:${profile.email}`, label: "Email" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="grid size-9 place-items-center rounded-full border border-border/60 bg-background/40 text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
-                >
-                  <s.icon className="size-4" />
-                </a>
-              ))}
-            </div>
-            <a
-              href={profile.email.replace(/^mailto:/, "")}
-              className="mt-3 inline-block text-sm text-muted-foreground transition-colors hover:text-foreground"
+            <p className="mt-3 text-sm text-muted-foreground">
+              {profile.location}
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {profile.availability}
+            </p>
+            <Link
+              href="#contact"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
             >
-              {profile.email}
-            </a>
+              Start a conversation →
+            </Link>
           </div>
         </div>
 
         <div className="mt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-border/60 pt-6">
           <p className="text-xs text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} {profile.name}. Built with Next.js,
-            Tailwind CSS & shadcn/ui.
+            © {new Date().getFullYear()} {profile.name}. Designed & built with
+            Next.js, Tailwind CSS & shadcn/ui.
           </p>
           <Link
             href="#top"
