@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * Preloader — a cinematic full-screen brand reveal.
- * Features a 3D rotating wireframe icosahedron built from CSS 3D transforms
- * (no WebGL), surrounded by orbiting rings, an animated "H" monogram at the
- * center, a neural-network node background, and a progress bar.
+ * NO "H" monogram. Uses a unique 3D animated hexagonal core that
+ * morphs + pulses, surrounded by orbiting rings, a neural-network
+ * node background, and a progress bar.
  */
 export function Preloader() {
   const [done, setDone] = React.useState(false);
@@ -62,16 +62,22 @@ export function Preloader() {
           />
 
           <div className="relative flex flex-col items-center gap-8">
-            {/* 3D wireframe icosahedron + monogram */}
+            {/* 3D morphing hexagonal core + orbiting rings */}
             <div
               className="relative grid place-items-center size-56"
-              style={{ perspective: 800 }}
+              style={{ perspective: 900 }}
             >
               {/* outer rotating dashed ring */}
               <motion.div
                 className="absolute inset-0 rounded-full border border-dashed border-primary/40"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              />
+              {/* counter-rotating mid ring */}
+              <motion.div
+                className="absolute inset-4 rounded-full border border-primary/20"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
               />
               {/* progress ring */}
               <svg className="absolute inset-0 -rotate-90" viewBox="0 0 200 200">
@@ -81,7 +87,7 @@ export function Preloader() {
                   r="92"
                   fill="none"
                   stroke="oklch(from var(--primary) l c h / 0.12)"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                 />
                 <motion.circle
                   cx="100"
@@ -89,7 +95,7 @@ export function Preloader() {
                   r="92"
                   fill="none"
                   stroke="var(--primary)"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeDasharray={2 * Math.PI * 92}
                   initial={{ strokeDashoffset: 2 * Math.PI * 92 }}
@@ -97,36 +103,46 @@ export function Preloader() {
                     strokeDashoffset: 2 * Math.PI * 92 * (1 - progress / 100),
                   }}
                   transition={{ ease: "easeOut", duration: 0.25 }}
-                  style={{ filter: "drop-shadow(0 0 6px var(--primary))" }}
+                  style={{ filter: "drop-shadow(0 0 8px var(--primary))" }}
                 />
               </svg>
 
-              {/* 3D wireframe icosahedron — 12 vertices as a rotating 3D shape */}
+              {/* 3D morphing hexagonal core — rotating + scaling */}
               <motion.div
                 className="relative"
                 style={{ transformStyle: "preserve-3d" }}
-                animate={{ rotateX: 360, rotateY: 360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                animate={{ rotateX: 360, rotateY: 360, scale: [1, 1.08, 1] }}
+                transition={{
+                  rotateX: { duration: 12, repeat: Infinity, ease: "linear" },
+                  rotateY: { duration: 9, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
+                }}
               >
-                <IcosahedronWire />
+                <HexCore />
               </motion.div>
 
-              {/* center "H" monogram (stays on top, not rotating) */}
-              <div className="absolute grid place-items-center">
-                <motion.svg viewBox="0 0 100 100" className="size-16">
-                  <motion.path
-                    d="M 25 15 L 25 85 M 25 50 L 75 50 M 75 15 L 75 85"
-                    fill="none"
-                    stroke="var(--primary)"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1.4, ease: "easeInOut" }}
-                    style={{ filter: "drop-shadow(0 0 8px var(--primary))" }}
-                  />
-                </motion.svg>
-              </div>
+              {/* pulsing center glow (no monogram) */}
+              <motion.div
+                className="pointer-events-none absolute grid place-items-center"
+                animate={{ opacity: [0.4, 0.9, 0.4], scale: [0.8, 1.1, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  width: 60,
+                  height: 60,
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle, oklch(from var(--primary) l c h / 0.8), transparent 70%)",
+                }}
+              />
+
+              {/* orbiting dot */}
+              <motion.div
+                className="absolute inset-0"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              >
+                <span className="absolute left-1/2 top-0 size-2.5 -translate-x-1/2 rounded-full bg-primary shadow-[0_0_10px_var(--primary)]" />
+              </motion.div>
 
               {/* shimmer sweep */}
               <motion.div
@@ -178,50 +194,51 @@ export function Preloader() {
 }
 
 /**
- * A CSS-3D wireframe icosahedron — 12 vertices connected by edges.
- * Built from positioned dots + lines using transform-style: preserve-3d.
+ * A 3D wireframe hexagonal core — 2 nested hexagons with connecting
+ * vertices, built from CSS 3D transforms. Morphs via parent rotation.
  */
-function IcosahedronWire() {
-  // 12 vertices of a regular icosahedron (normalized to size ~70px radius)
-  const phi = (1 + Math.sqrt(5)) / 2;
-  const r = 56;
-  const norm = Math.sqrt(1 + phi * phi);
-  const verts = [
-    [-1, phi, 0],
-    [1, phi, 0],
-    [-1, -phi, 0],
-    [1, -phi, 0],
-    [0, -1, phi],
-    [0, 1, phi],
-    [0, -1, -phi],
-    [0, 1, -phi],
-    [phi, 0, -1],
-    [phi, 0, 1],
-    [-phi, 0, -1],
-    [-phi, 0, 1],
-  ].map(([x, y, z]) => [
-    Math.round((x / norm) * r * 100) / 100,
-    Math.round((y / norm) * r * 100) / 100,
-    Math.round((z / norm) * r * 100) / 100,
-  ]);
-
-  // edges (pairs of vertex indices that form the 30 edges)
-  const edges: [number, number][] = [
-    [0, 1], [0, 5], [0, 7], [0, 10], [0, 11],
-    [1, 5], [1, 7], [1, 8], [1, 9],
-    [2, 3], [2, 4], [2, 6], [2, 10], [2, 11],
-    [3, 4], [3, 6], [3, 8], [3, 9],
-    [4, 5], [4, 9], [4, 11],
-    [5, 9], [5, 11],
-    [6, 7], [6, 8], [6, 10],
-    [7, 8], [7, 10],
-    [8, 9],
-    [10, 11],
-  ];
+function HexCore() {
+  // 6 vertices of a hexagon (radius 48)
+  const r = 48;
+  const verts = Array.from({ length: 6 }).map((_, i) => {
+    const angle = (i * 60 * Math.PI) / 180;
+    return [
+      Math.round((Math.cos(angle) * r) * 100) / 100,
+      Math.round((Math.sin(angle) * r) * 100) / 100,
+      0,
+    ] as [number, number, number];
+  });
+  // inner hexagon (radius 24)
+  const r2 = 24;
+  const inner = verts.map(() => [0, 0, 0] as [number, number, number]);
+  for (let i = 0; i < 6; i++) {
+    const angle = (i * 60 * Math.PI) / 180;
+    inner[i] = [
+      Math.round((Math.cos(angle) * r2) * 100) / 100,
+      Math.round((Math.sin(angle) * r2) * 100) / 100,
+      0,
+    ];
+  }
 
   return (
     <div className="relative size-0" style={{ transformStyle: "preserve-3d" }}>
-      {/* vertices */}
+      {/* outer hexagon edges */}
+      {[0, 1, 2, 3, 4, 5].map((i) => {
+        const a = verts[i];
+        const b = verts[(i + 1) % 6];
+        return <Edge key={`o-${i}`} a={a} b={b} opacity={0.6} />;
+      })}
+      {/* inner hexagon edges */}
+      {[0, 1, 2, 3, 4, 5].map((i) => {
+        const a = inner[i];
+        const b = inner[(i + 1) % 6];
+        return <Edge key={`i-${i}`} a={a} b={b} opacity={0.35} />;
+      })}
+      {/* spokes connecting outer to inner */}
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <Edge key={`s-${i}`} a={verts[i]} b={inner[i]} opacity={0.25} />
+      ))}
+      {/* vertex dots */}
       {verts.map((v, i) => (
         <div
           key={`v-${i}`}
@@ -232,42 +249,53 @@ function IcosahedronWire() {
           }}
         />
       ))}
-      {/* edges (rendered as thin rotated divs) */}
-      {edges.map(([a, b], i) => {
-        const va = verts[a];
-        const vb = verts[b];
-        const dx = vb[0] - va[0];
-        const dy = vb[1] - va[1];
-        const dz = vb[2] - va[2];
-        const len = Math.round(Math.sqrt(dx * dx + dy * dy + dz * dz) * 100) / 100;
-        // midpoint (rounded)
-        const mx = Math.round(((va[0] + vb[0]) / 2) * 100) / 100;
-        const my = Math.round(((va[1] + vb[1]) / 2) * 100) / 100;
-        const mz = Math.round(((va[2] + vb[2]) / 2) * 100) / 100;
-        // angles (rounded)
-        const rotZ = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) * 100) / 100;
-        const rotY = Math.round(Math.atan2(dz, Math.sqrt(dx * dx + dy * dy)) * (180 / Math.PI) * 100) / 100;
-        return (
-          <div
-            key={`e-${i}`}
-            className="absolute top-1/2 left-1/2"
-            style={{
-              width: `${len}px`,
-              height: "1px",
-              background: "oklch(from var(--primary) l c h / 0.4)",
-              transformOrigin: "0 0",
-              transform: `translate3d(${mx - len / 2}px, ${my}px, ${mz}px) rotateZ(${rotZ}deg) rotateY(${rotY}deg)`,
-            }}
-          />
-        );
-      })}
+      {inner.map((v, i) => (
+        <div
+          key={`iv-${i}`}
+          className="absolute size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/70"
+          style={{
+            transform: `translate3d(${v[0]}px, ${v[1]}px, ${v[2]}px)`,
+          }}
+        />
+      ))}
     </div>
+  );
+}
+
+function Edge({
+  a,
+  b,
+  opacity,
+}: {
+  a: [number, number, number];
+  b: [number, number, number];
+  opacity: number;
+}) {
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const dz = b[2] - a[2];
+  const len = Math.round(Math.sqrt(dx * dx + dy * dy + dz * dz) * 100) / 100;
+  const mx = Math.round(((a[0] + b[0]) / 2) * 100) / 100;
+  const my = Math.round(((a[1] + b[1]) / 2) * 100) / 100;
+  const mz = Math.round(((a[2] + b[2]) / 2) * 100) / 100;
+  const rotZ = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) * 100) / 100;
+  const rotY = Math.round(Math.atan2(dz, Math.sqrt(dx * dx + dy * dy)) * (180 / Math.PI) * 100) / 100;
+  return (
+    <div
+      className="absolute top-1/2 left-1/2"
+      style={{
+        width: `${len}px`,
+        height: "1.5px",
+        background: `oklch(from var(--primary) l c h / ${opacity})`,
+        transformOrigin: "0 0",
+        transform: `translate3d(${mx - len / 2}px, ${my}px, ${mz}px) rotateZ(${rotZ}deg) rotateY(${rotY}deg)`,
+      }}
+    />
   );
 }
 
 /** Subtle animated neural-network node background. */
 function NeuralBackground() {
-  // Deterministic positions (no Math.random — avoids SSR hydration mismatch)
   const nodes = React.useMemo(
     () =>
       Array.from({ length: 16 }).map((_, i) => ({

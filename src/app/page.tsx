@@ -8,6 +8,7 @@ import { Education } from "@/components/sections/education";
 import { Certifications } from "@/components/sections/certifications";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
+import { SectionTransition } from "@/components/section-transition";
 
 export default function Home() {
   return (
@@ -15,13 +16,27 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Certifications />
-        <Contact />
+        <SectionTransition>
+          <About />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Skills />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Experience />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Projects />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Education />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Certifications />
+        </SectionTransition>
+        <SectionTransition delay={0.05}>
+          <Contact />
+        </SectionTransition>
       </main>
       <Footer />
     </div>

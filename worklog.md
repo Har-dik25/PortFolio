@@ -375,3 +375,53 @@ Stage Summary:
 - Hero: training dashboard REMOVED → unique 3D AI Core (rings + orb + orbiting tech nodes + parallax) + 3D depth background.
 - Preloader: REBUILT with 3D rotating wireframe icosahedron + bigger size + glow.
 - Projects: REBUILT with 3D flip cards (hover to flip) + featured showcase + filter tabs (All/Solo/Group) + glass-card 3D style.
+
+---
+Task ID: IMG-GEN
+Agent: general-purpose
+Task: Generate AI thumbnail images for projects + section accents
+
+Work Log:
+- Read prior context from /home/z/my-project/worklog.md (previous CERT-RESEARCH task by another agent).
+- Checked image-generation skill at /home/z/my-project/skills/image-generation/SKILL.md and confirmed CLI flags. Ran `z-ai image-gen --help` which returned "Unknown command image-gen"; ran `z-ai image --help` which confirmed the correct command is `z-ai image -p "<prompt>" -o "<path>" -s <size>` (supported size 1024x1024).
+- Created output directory `/home/z/my-project/public/projects` via `mkdir -p`.
+- Generated 6 project thumbnails + 2 section accent images sequentially using `z-ai image` CLI at 1024x1024. All 8 calls succeeded on the first attempt — no retries needed.
+- Verified each generated PNG via `ls -la`: all 8 files exist and are >10KB (smallest = contact-accent.png at 69KB; largest = skills-accent.png at 139KB).
+- All prompts explicitly include "no text" / "dark background" / amber-orange accent per spec; no text, no logos, no real faces in the prompts.
+
+Stage Summary:
+- /home/z/my-project/public/projects/medinote.png (82,508 bytes / ~82 KB)
+- /home/z/my-project/public/projects/rural-healthcare.png (96,070 bytes / ~96 KB)
+- /home/z/my-project/public/projects/samvidhan-ai.png (91,526 bytes / ~91 KB)
+- /home/z/my-project/public/projects/fake-news.png (100,908 bytes / ~100 KB)
+- /home/z/my-project/public/projects/shopwave.png (117,277 bytes / ~117 KB)
+- /home/z/my-project/public/projects/market-sentiment.png (93,836 bytes / ~93 KB)
+- /home/z/my-project/public/skills-accent.png (139,181 bytes / ~139 KB)
+- /home/z/my-project/public/contact-accent.png (69,368 bytes / ~69 KB)
+
+---
+Task ID: PORTFOLIO-UPDATE-10
+Agent: main
+Task: Remove AI Core from hero (add code terminal), rebuild preloader (no H), rebuild Skills (radial graph), rebuild Projects (with images), rebuild Education (with animations), add section transitions, add AI images.
+
+Work Log:
+- Dispatched IMG-GEN subagent → generated 8 AI images (1024x1024): 6 project thumbnails (medinote, rural-healthcare, samvidhan-ai, fake-news, shopwave, market-sentiment) + 2 section accents (skills-accent, contact-accent). All dark/amber/abstract tech themed, no text/faces.
+- Added `image?` field to Project type + added image paths to 6 projects in portfolio-data.ts.
+- Removed AICore3D from hero → built new CodeTerminal component (src/components/code-terminal.tsx): a stylized terminal window that types out a live Python coding session (import torch / AutoModel / inference) with syntax highlighting + line numbers + blinking cursor + status footer (python 3.11 / cuda:0 / running). 4 floating skill orbs (Python/PyTorch/RAG/FastAPI) orbit around the terminal. No photo/image of a person.
+- Rebuilt preloader (src/components/preloader.tsx): removed the "H" monogram entirely. New center is a 3D rotating wireframe hexagonal core (2 nested hexagons + spokes + vertex dots, all CSS 3D transforms) that morphs via parent rotation. Kept progress ring, orbiting dot, neural background, name+role. Fixed hydration by rounding all edge transforms to 2 decimals.
+- Rebuilt Skills section (src/components/sections/skills.tsx): added RadialSkillGraph component (SVG with 8 top skills as radiating lines from center + concentric guide rings + pulsing center dot) on the left, with skills-accent.png behind at 15% opacity. Category cards on right now have shimmer-overlay skill bars (animated gradient sweep). 3D tilt cards with glass-card.
+- Rebuilt Projects section (src/components/sections/projects.tsx): featured cards now show AI thumbnail images at top (with hover scale + gradient overlay + floating icon badge + Featured badge). Flip cards also show thumbnail images on the front. Kept filter tabs (All/Solo/Group) + 3D flip animation + glass-card style.
+- Rebuilt Education & Achievements (src/components/sections/education.tsx): added 3 summary stat cards with count-up animations (Institutions/Achievements/Hackathons). Education timeline now has pulsing node rings (animated scale+opacity). Grade values (CGPA/Percentage) animate via count-up on scroll into view. Achievement cards have spring-icon entrance + 3D tilt. Fixed ref-during-render lint by returning tuple [val, ref] from useCountUp.
+- Created SectionTransition component (src/components/section-transition.tsx): wraps each section with scroll-reveal (opacity+y) + animated gradient divider at top.
+- Updated page.tsx to wrap all sections (About/Skills/Experience/Projects/Education/Certifications/Contact) in SectionTransition for cohesive motion between sections.
+- Added contact-accent.png as a blurred background accent in Contact section.
+- Lint clean. Dev server running, 0 hydration errors, 0 console errors. VLM verified: hero code terminal (no AI Core, no photo), preloader (no H, hexagonal core), skills (radial graph + shimmer bars), projects (AI thumbnails on featured + flip cards), education (3 stats + timeline + achievements).
+
+Stage Summary:
+- Hero: AI Core REMOVED → animated code terminal with syntax highlighting + orbiting skill orbs.
+- Preloader: "H" monogram REMOVED → 3D rotating wireframe hexagonal core.
+- Skills: REBUILT with radial skill graph + shimmer-animated bars + accent image.
+- Projects: REBUILT with AI-generated thumbnail images on featured + flip cards.
+- Education: REBUILT with count-up animations + pulsing timeline nodes + summary stats.
+- Section transitions added between every section (scroll-reveal + gradient dividers).
+- 8 AI images generated + integrated (6 project thumbnails + 2 section accents).
