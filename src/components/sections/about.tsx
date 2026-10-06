@@ -25,15 +25,6 @@ const pillars = [
   },
 ];
 
-const focusAreas = [
-  "LLMs & RAG",
-  "NLP",
-  "Computer Vision",
-  "FastAPI",
-  "PyTorch",
-  "LangChain",
-];
-
 export function About() {
   return (
     <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
@@ -82,18 +73,6 @@ export function About() {
               </span>{" "}
               (remote / hybrid). I learn fast, document everything, and ship.
             </p>
-
-            {/* focus area chips */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {focusAreas.map((f) => (
-                <span
-                  key={f}
-                  className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
           </motion.div>
 
           {/* pillars */}

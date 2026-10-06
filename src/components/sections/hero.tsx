@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/lib/portfolio-data";
-import { HeroConsole } from "@/components/hero-console";
+import { TrainingDashboard } from "@/components/training-dashboard";
 
 export function Hero() {
   return (
@@ -132,14 +132,14 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: 3D functional console */}
+          {/* Right: 3D animated training dashboard */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
             className="flex justify-center lg:justify-end"
           >
-            <HeroConsole />
+            <TrainingDashboard />
           </motion.div>
         </div>
       </div>

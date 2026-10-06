@@ -331,3 +331,25 @@ Stage Summary:
 - Colors REVERTED to amber across the whole portfolio.
 - Preloader REDESIGNED → clean animated "H" monogram + progress ring + orbiting dot (amber, no 3D cube).
 - The 3D R3F components (desk-scene-3d, hero-scene-3d, topo-waves, avatar-3d) remain as files but are unused; can be deleted later if needed.
+
+---
+Task ID: PORTFOLIO-UPDATE-8
+Agent: main
+Task: Remove console card from hero, make preloader bigger/better, light mode green, remove duplicates, rebuild Certifications section as 3D/animated/professional.
+
+Work Log:
+- Removed HeroConsole from hero → built new TrainingDashboard component (src/components/training-dashboard.tsx): 3D tilt card with live ML training session — animated loss curve (SVG path draw + moving dot), animated accuracy counter (0→94.2%), looping epoch/GPU/loss counters, stat cards, progress bar, "cuda:0 / batch:32 / lr:2e-5" footer. Replaces the old terminal console.
+- Rebuilt preloader (src/components/preloader.tsx): bigger (size-48 monogram ring vs size-28 before), dual counter-rotating dashed rings, progress ring with glow filter, orbiting dot, animated "H" SVG path draw, neural-network node background (14 deterministic pulsing nodes + connecting lines), name + role + progress bar. Fixed hydration mismatches from Math.random by using deterministic sine-based positions + rounding to 2 decimals.
+- Light mode green: changed :root --primary from oklch(0.72 0.17 65) amber to oklch(0.62 0.17 150) green. All :root variables updated to hue 150 (green). Dark mode .dark stays amber (hue 70). Verified computed --primary = lab(58% -51.7 34.5) = green in light mode.
+- Removed duplicate focus-area chips from About section (they already exist in Skills section — kept only where suitable). Also removed unused focusAreas constant.
+- Rebuilt Certifications section (src/components/sections/certifications.tsx): merged certificates + certifications into single list with type tags (certificate/certification/simulation). Added 3 animated counter stat cards (Total Credentials 15, Unique Issuers, Job Simulations 4) with IntersectionObserver-triggered count-up. Added 4 filter tabs (All/Certificates/Certifications/Job Simulations) with live count badges + AnimatePresence filtering. Each card is a 3D TiltCard with glass-card + glow-border, type badge, title, description, issuer, date, "View credential" link, and ShieldCheck icon for professional certs.
+- Fixed hydration mismatches: LossChart used Math.random → replaced with deterministic sine-based noise + rounded to 2 decimals. NeuralBackground used Math.random → replaced with deterministic sine positions + rounded.
+- Cleared .next cache + restarted dev server to pick up CSS changes (stale compiled CSS was serving old amber values).
+- Lint clean. Dev server running. VLM verified: hero training dashboard (9/10), light mode green confirmed, preloader big/bold with H monogram, certifications section with stats + tabs + 3D cards confirmed via DOM snapshot + filter functionality tested.
+
+Stage Summary:
+- Hero: console card REMOVED → 3D animated training dashboard (loss curve + accuracy/epoch/GPU counters).
+- Preloader: bigger + better (size-48, dual rings, neural background, glow).
+- Light mode: GREEN primary (dark mode stays amber).
+- About: duplicate focus chips REMOVED (kept only in Skills).
+- Certifications: REBUILT — 3D tilt cards + animated counters + filter tabs + glass-card design. Fully functional filtering.
