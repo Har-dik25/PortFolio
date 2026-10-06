@@ -1,0 +1,25 @@
+{
+  "roles": [
+    {
+      "id": "recruiter",
+      "label": "Recruiter",
+      "icon": "fa-solid fa-briefcase",
+      "description": "Quick scan: skills, experience, education, contact",
+      "highlight": ["about", "skills", "experience", "education", "connect"]
+    },
+    {
+      "id": "engineer",
+      "label": "Engineer",
+      "icon": "fa-solid fa-code",
+      "description": "Deep dive: projects, tech, GitHub",
+      "highlight": ["projects", "skills", "experience", "about"]
+    },
+    {
+      "id": "founder",
+      "label": "Founder / PM",
+      "icon": "fa-solid fa-lightbulb",
+      "description": "Outcome focus: shipped work, impact, problem-solving",
+      "highlight": ["projects", "experience", "about", "connect"]
+    }
+  ]
+}

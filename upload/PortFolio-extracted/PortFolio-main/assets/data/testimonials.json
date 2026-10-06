@@ -1,0 +1,28 @@
+{
+  "testimonials": [
+    {
+      "id": "t1",
+      "name": "Mentor, Futurense",
+      "role": "Senior Data Scientist",
+      "company": "Futurense Technologies",
+      "quote": "Hardik approaches every problem with curiosity and rigor. His work on the medical documentation platform showed strong ownership from data pipeline to API surface.",
+      "initials": "FN"
+    },
+    {
+      "id": "t2",
+      "name": "Project Collaborator",
+      "role": "ML Engineer",
+      "company": "OCR × Azure",
+      "quote": "A reliable collaborator who ships clean, well-documented code. Hardik picks up new tools fast and turns them into working features.",
+      "initials": "VA"
+    },
+    {
+      "id": "t3",
+      "name": "Hackathon Teammate",
+      "role": "Backend Developer",
+      "company": "University Hackathons",
+      "quote": "Strong fundamentals, calm under pressure, and a knack for unblocking the team. The kind of engineer you want on a tight deadline.",
+      "initials": "HT"
+    }
+  ]
+}

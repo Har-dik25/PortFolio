@@ -1,0 +1,61 @@
+{
+  "experiences": [
+    {
+      "id": "futurense-aiml",
+      "role": "AI/ML Intern",
+      "company": "Futurense Technologies",
+      "period": "Jul '26",
+      "current": true,
+      "highlights": [
+        "Developed an AI-powered medical documentation platform leveraging <strong>LLMs and NLP</strong> to automate clinical note generation and streamline healthcare workflows.",
+        "Designed and integrated secure <strong>RESTful APIs</strong>, enabling seamless communication between the frontend, backend, and AI services for efficient document management.",
+        "Built scalable full-stack features using <strong>Python, React.js, REST APIs, MongoDB, Git, and GitHub</strong>, improving application performance and user experience."
+      ],
+      "certificate": null
+    },
+    {
+      "id": "futurense-data",
+      "role": "Data Intern",
+      "company": "Futurense Technologies",
+      "period": "Jun '25 – Aug '25",
+      "current": false,
+      "highlights": [
+        "Developed and deployed production-grade <strong>ML models</strong> to forecast lead volume and conversion rates.",
+        "Cleaned and standardized high-volume marketing data to support end-to-end funnel and cohort analysis, ensuring near-perfect data consistency across reporting tools.",
+        "Delivered <strong>Power BI dashboards</strong> to visualize funnel drop-offs, identifying 15% critical inefficiencies in CPL focused optimization strategies."
+      ],
+      "certificate": {
+        "label": "View Certificate",
+        "url": "https://www.linkedin.com/posts/hardik8_internship-activity-7429402370805047296-5OnB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQRyuwB0zCPK7scmrw3oCQd02xFX6nHoBk"
+      }
+    }
+  ],
+  "education": [
+    {
+      "id": "lpu-cse",
+      "degree": "B.Tech in Computer Science & Engineering",
+      "school": "Lovely Professional University, Punjab",
+      "period": "Aug '23 – Jul '27 (Expected)",
+      "grade": "CGPA: 7.00",
+      "icon": "fa-solid fa-graduation-cap"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "oci-genai",
+      "title": "OCI Certified Generative AI Professional",
+      "issuer": "Oracle",
+      "date": "Sep '25",
+      "icon": "fa-solid fa-cloud",
+      "url": "https://www.linkedin.com/posts/hardik8_generative-ai-professional-activity-7388917134468431872-ipzL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQRyuwB0zCPK7scmrw3oCQd02xFX6nHoBk"
+    },
+    {
+      "id": "oci-ds",
+      "title": "OCI Certified Data Science Professional",
+      "issuer": "Oracle",
+      "date": "Sep '25",
+      "icon": "fa-solid fa-chart-line",
+      "url": "https://www.linkedin.com/posts/hardik8_data-science-professional-ugcPost-7389534103588659200-GkAy/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQRyuwB0zCPK7scmrw3oCQd02xFX6nHoBk"
+    }
+  ]
+}

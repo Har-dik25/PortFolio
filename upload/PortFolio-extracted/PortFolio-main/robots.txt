@@ -1,0 +1,5 @@
+# robots.txt for Hardik's Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://hardik.dev/sitemap.xml

@@ -1,0 +1,27 @@
+{
+  "person": {
+    "name": "Hardik",
+    "title": "AI/ML Engineer",
+    "email": "hardikkumar2583@gmail.com",
+    "phone": "+917878600960",
+    "location": "Punjab, India",
+    "availability": "Open to AI/ML Engineer roles · Remote / Hybrid",
+    "github": "Har-dik25",
+    "linkedin": "hardik8",
+    "website": "https://hardik.dev"
+  },
+  "stats": {
+    "projects": 13,
+    "domains": 8,
+    "cgpa": 7.00,
+    "githubRepos": null,
+    "githubFollowers": null,
+    "githubFollowing": null
+  },
+  "socials": [
+    { "name": "GitHub", "icon": "fa-brands fa-github", "url": "https://github.com/Har-dik25", "label": "GitHub Profile" },
+    { "name": "LinkedIn", "icon": "fa-brands fa-linkedin", "url": "https://www.linkedin.com/in/hardik8/", "label": "LinkedIn Profile" },
+    { "name": "Email", "icon": "fa-solid fa-envelope", "url": "mailto:hardikkumar2583@gmail.com", "label": "Email", "copy": "hardikkumar2583@gmail.com" },
+    { "name": "Phone", "icon": "fa-solid fa-phone", "url": "tel:+917878600960", "label": "Phone", "copy": "+917878600960" }
+  ]
+}

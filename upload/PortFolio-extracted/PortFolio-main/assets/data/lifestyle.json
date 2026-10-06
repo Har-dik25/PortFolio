@@ -1,0 +1,16 @@
+{
+  "voice": {
+    "title": "Hear it from Hardik",
+    "subtitle": "30-second audio intro",
+    "src": "assets/audio/intro.mp3"
+  },
+  "dayInLife": [
+    { "time": "08:00", "title": "Coffee + paper review", "desc": "Skim arXiv abstracts and review yesterday's git notifications." },
+    { "time": "09:30", "title": "Deep focus block", "desc": "Build / train — no meetings, no Slack, just code and notebooks." },
+    { "time": "12:00", "title": "Lunch + walk", "desc": "Recharge — physical movement clears the cache." },
+    { "time": "13:00", "title": "Code review & pairing", "desc": "Review PRs, debug alongside teammates, write tests." },
+    { "time": "15:30", "title": "Design / planning", "desc": "Whiteboard, sketch pipelines, write specs." },
+    { "time": "17:00", "title": "Writing & learning", "desc": "Blog posts, side-project experiments, reading." },
+    { "time": "19:00", "title": "Shutdown ritual", "desc": "Commit, push, write tomorrow's top-3 list, log off." }
+  ]
+}

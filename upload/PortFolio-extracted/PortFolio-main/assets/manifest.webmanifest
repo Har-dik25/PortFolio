@@ -1,0 +1,21 @@
+{
+  "name": "Hardik — AI/ML Engineer",
+  "short_name": "Hardik",
+  "description": "Portfolio of Hardik — AI/ML Engineer specializing in LLMs, NLP, Computer Vision, and full-stack AI applications.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0b10",
+  "theme_color": "#f5b342",
+  "orientation": "portrait",
+  "lang": "en",
+  "categories": ["portfolio", "productivity", "developer"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

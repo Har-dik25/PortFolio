@@ -1,0 +1,272 @@
+{
+  "projects": [
+    {
+      "slug": "samvidhan-ai",
+      "title": "Legal Mind RAG — Samvidhan AI",
+      "tagline": "AI legal assistant for the Indian Constitution",
+      "icon": "fa-solid fa-balance-scale",
+      "featured": true,
+      "description": "AI-powered legal assistant that answers questions about the Indian Constitution and legal documents using Retrieval-Augmented Generation. Built a hybrid retrieval pipeline combining dense vector search, BM25 sparse retrieval, and Reciprocal Rank Fusion (RRF), with FastAPI and Ollama powering the application layer.",
+      "tech": ["LLM", "RAG", "BM25", "ChromaDB", "FastAPI", "Ollama"],
+      "url": "https://github.com/Har-dik25/Samvidhan_AI",
+      "caseStudy": {
+        "problem": "Legal professionals and citizens struggle to quickly find relevant clauses in the lengthy Indian Constitution and related legal documents.",
+        "solution": "Designed a hybrid RAG system that combines dense vector search (semantic) with BM25 (lexical) retrieval, then fuses results via Reciprocal Rank Fusion for high-precision context selection.",
+        "impact": "Significantly improved answer relevance over single-retriever baselines; demonstrated production-grade RAG architecture using local LLMs via Ollama.",
+        "highlights": [
+          "Hybrid dense + sparse retrieval (RRF fusion)",
+          "Local LLM inference via Ollama (no cloud cost)",
+          "FastAPI service with clean REST contract"
+        ]
+      }
+    },
+    {
+      "slug": "fake-news-detection",
+      "title": "Fake News Detection System",
+      "tagline": "Deep learning for misinformation detection",
+      "icon": "fa-solid fa-newspaper",
+      "featured": true,
+      "description": "Deep learning-based fake news detection system trained on 72,000+ news articles using a hybrid BERT and BiLSTM architecture with TF-IDF, POS-tagging, and sentiment features. Includes attention-based explainability, FastAPI inference, Docker deployment, and visual heatmaps for model predictions.",
+      "tech": ["Python", "PyTorch", "BERT", "BiLSTM", "NLP", "FastAPI", "XAI"],
+      "url": "https://github.com/Har-dik25/Fake-News-Detection-System",
+      "caseStudy": {
+        "problem": "Misinformation spreads faster than manual fact-checking can counter, and pure black-box models lack the explainability needed for trust.",
+        "solution": "Built a hybrid BERT + BiLSTM classifier with hand-crafted linguistic features (TF-IDF, POS, sentiment) and attention-based interpretability that highlights the tokens driving each prediction.",
+        "impact": "Trained on 72k+ articles; packaged with FastAPI inference, Docker, and visual heatmaps so end-users can see why a claim was flagged.",
+        "highlights": [
+          "72k+ training articles",
+          "Attention-based explainability (XAI)",
+          "Dockerized FastAPI inference service"
+        ]
+      }
+    },
+    {
+      "slug": "shopwave-agent",
+      "title": "ShopWave — Autonomous Support Agent",
+      "tagline": "Multi-step e-commerce support automation",
+      "icon": "fa-solid fa-shopping-cart",
+      "featured": false,
+      "description": "Autonomous e-commerce customer-support resolution system that classifies support tickets, executes multi-step tool chains, validates actions, escalates uncertain cases, and maintains a complete audit trail.",
+      "tech": ["Python", "AI Agent", "Automation", "REST API", "Concurrency", "Fault Tolerance"],
+      "url": "https://github.com/Har-dik25/ShopWave_Autonomous_Support_Resolution_Agent",
+      "caseStudy": {
+        "problem": "E-commerce support tickets overwhelm human teams, and naive chatbots can't execute multi-step actions safely.",
+        "solution": "Built an autonomous agent that classifies intent, executes validated tool chains, escalates low-confidence cases, and logs every step for audit.",
+        "impact": "Demonstrated a production-style agent loop with fault tolerance and human-in-the-loop escalation.",
+        "highlights": [
+          "Intent classification with confidence thresholding",
+          "Multi-step tool execution with validation",
+          "Full audit trail of every action"
+        ]
+      }
+    },
+    {
+      "slug": "gemini-ocr-azure",
+      "title": "Gemini OCR — Azure",
+      "tagline": "Serverless multimodal OCR on Azure",
+      "icon": "fa-solid fa-eye",
+      "featured": false,
+      "description": "AI-powered OCR application that extracts text from images and PDF documents using Google Gemini's multimodal capabilities. Built a serverless Python backend with Azure Functions.",
+      "tech": ["Google Gemini", "Azure Functions", "OCR", "Python", "REST API", "Cloud"],
+      "url": "https://github.com/vansharora156/Gemini-Ocr-Azure",
+      "collaboration": true,
+      "caseStudy": {
+        "problem": "Traditional OCR struggles with noisy images and PDFs that mix text with charts, tables, and diagrams.",
+        "solution": "Leveraged Gemini's multimodal capabilities through a serverless Azure Functions backend, so documents are parsed on demand with no infrastructure to manage.",
+        "impact": "Clean, event-driven OCR pipeline that scales with usage and costs nothing when idle.",
+        "highlights": [
+          "Serverless architecture (Azure Functions)",
+          "Gemini multimodal text + structure extraction",
+          "Collaboration project"
+        ]
+      }
+    },
+    {
+      "slug": "solar-forecasting",
+      "title": "Solar Power Generation Forecasting",
+      "tagline": "ML forecasting for renewable energy",
+      "icon": "fa-solid fa-solar-panel",
+      "featured": false,
+      "description": "Machine learning system for forecasting solar power generation using historical power data, weather information, and temporal features. Deployed the prediction workflow through Streamlit.",
+      "tech": ["Python", "Machine Learning", "Regression", "Ensemble Learning", "Streamlit", "Forecasting"],
+      "url": "https://github.com/LeviAckermanZ9/solar-power-generation-forecasting",
+      "collaboration": true,
+      "caseStudy": {
+        "problem": "Solar power generation is highly weather-dependent, making grid planning and storage hard.",
+        "solution": "Built regression + ensemble models combining historical generation, weather, and temporal features; deployed via Streamlit for easy exploration.",
+        "impact": "An interactive forecasting tool that helps plan renewable-energy operations more reliably.",
+        "highlights": [
+          "Ensemble regression for robust predictions",
+          "Weather + temporal feature engineering",
+          "Streamlit deployment"
+        ]
+      }
+    },
+    {
+      "slug": "kaggle-backpack",
+      "title": "Kaggle Backpack Price Prediction",
+      "tagline": "Tabular ML competition workflow",
+      "icon": "fa-solid fa-briefcase",
+      "featured": false,
+      "description": "Machine learning regression project developed for the Kaggle Tabular Playground Series to predict backpack prices from product attributes. Performed EDA, feature engineering, and RMSE evaluation.",
+      "tech": ["Python", "Machine Learning", "Regression", "Feature Engineering", "Kaggle", "RMSE"],
+      "url": "https://github.com/JXPJXT/Kaggle-Backpack-Prediction-Challenge",
+      "collaboration": true,
+      "caseStudy": {
+        "problem": "Kaggle tabular challenge: predict backpack prices from product attributes.",
+        "solution": "End-to-end EDA, feature engineering, and RMSE-driven model selection.",
+        "impact": "Strong baseline submission with a clean, reusable pipeline.",
+        "highlights": [
+          "EDA-driven feature engineering",
+          "RMSE-optimized model selection",
+          "Collaboration project"
+        ]
+      }
+    },
+    {
+      "slug": "traffic-congestion",
+      "title": "AI Traffic Congestion Analysis",
+      "tagline": "Computer vision for traffic flow",
+      "icon": "fa-solid fa-traffic-light",
+      "featured": false,
+      "description": "Computer vision and deep learning system for analyzing traffic footage to identify congestion levels and forecast traffic flow. Uses video-based visual analysis to extract traffic patterns.",
+      "tech": ["Computer Vision", "OpenCV", "Deep Learning", "Python", "Video Analytics"],
+      "url": "https://github.com/Har-dik25/AI-Traffic-Congestion-Analysis",
+      "caseStudy": {
+        "problem": "Manual traffic monitoring doesn't scale and misses short-term patterns.",
+        "solution": "Video-based CV pipeline that classifies congestion levels and forecasts near-term flow.",
+        "impact": "Pattern-level insight from raw traffic footage for city planners.",
+        "highlights": [
+          "OpenCV-based video pipeline",
+          "Deep-learning congestion classification",
+          "Short-horizon flow forecasting"
+        ]
+      }
+    },
+    {
+      "slug": "transport-delay",
+      "title": "Public Transport Delay × Weather",
+      "tagline": "Data analysis of disruption patterns",
+      "icon": "fa-solid fa-bus",
+      "featured": false,
+      "description": "Data analysis pipeline combining public transport delay data with weather events to identify disruption patterns and relationships between environmental conditions and transportation performance.",
+      "tech": ["Data Engineering", "Pandas", "Python", "Data Analysis", "Visualization"],
+      "url": "https://github.com/Har-dik25/Public-Transport-Delays-with-Weather-Events",
+      "caseStudy": {
+        "problem": "Transit agencies need to understand how weather drives delays.",
+        "solution": "Joined public transport delay records with weather events and surfaced disruption patterns.",
+        "impact": "Clear, reproducible analysis showing environmental drivers of delay.",
+        "highlights": [
+          "Multi-source data joining",
+          "Pattern discovery in delay + weather",
+          "Reusable Pandas pipeline"
+        ]
+      }
+    },
+    {
+      "slug": "hitcast-spotify",
+      "title": "HitCast — Spotify Popularity Predictor",
+      "tagline": "ML on audio features",
+      "icon": "fa-brands fa-spotify",
+      "featured": false,
+      "description": "Machine learning system that predicts Spotify track popularity using audio characteristics and regression techniques. Performed data preparation, feature analysis, and predictive modeling.",
+      "tech": ["Machine Learning", "Regression", "Python", "Spotify API", "Data Analysis"],
+      "url": "https://github.com/Har-dik25/HitCast-Spotify-Track-Popularity-Predictor",
+      "caseStudy": {
+        "problem": "Can audio features alone predict whether a track will become popular?",
+        "solution": "Built a regression pipeline on Spotify audio features with feature analysis.",
+        "impact": "Insights into which acoustic features correlate with popularity.",
+        "highlights": [
+          "Spotify Web API ingestion",
+          "Audio feature regression",
+          "Feature importance analysis"
+        ]
+      }
+    },
+    {
+      "slug": "ocr-studio",
+      "title": "OCR Studio",
+      "tagline": "Offline client-side OCR to JSON",
+      "icon": "fa-solid fa-image",
+      "featured": false,
+      "description": "Offline OCR web application that converts images into structured JSON entirely on the client side. Built with React and Tesseract to perform text extraction without cloud-based OCR services.",
+      "tech": ["OCR", "React.js", "Tesseract", "JavaScript", "JSON"],
+      "url": "https://github.com/Har-dik25/OCR-Studio-Offline-Image-to-JSON-Web-App",
+      "caseStudy": {
+        "problem": "Cloud OCR services are expensive and risky for sensitive documents.",
+        "solution": "Pure client-side React + Tesseract pipeline that converts images to structured JSON in the browser.",
+        "impact": "Zero-cost, fully private OCR that works offline.",
+        "highlights": [
+          "100% client-side (no server)",
+          "Structured JSON output",
+          "Offline-capable"
+        ]
+      }
+    },
+    {
+      "slug": "loan-analysis",
+      "title": "Loan Dataset Analysis",
+      "tagline": "EDA + statistical analysis",
+      "icon": "fa-solid fa-chart-pie",
+      "featured": false,
+      "description": "End-to-end exploratory analysis of loan data, including missing-value treatment, IQR-based outlier handling, statistical analysis, and univariate, bivariate, and multivariate visualization.",
+      "tech": ["Python", "Pandas", "EDA", "Data Cleaning", "Statistics", "Matplotlib"],
+      "url": "https://github.com/rashmisahray/Loan-data-analysis",
+      "collaboration": true,
+      "caseStudy": {
+        "problem": "Raw loan datasets need rigorous cleaning before they tell a story.",
+        "solution": "Missing-value treatment, IQR outlier handling, and multi-level visualization.",
+        "impact": "Clean, reproducible analysis with a reusable notebook.",
+        "highlights": [
+          "IQR outlier handling",
+          "Univariate / bivariate / multivariate EDA",
+          "Collaboration project"
+        ]
+      }
+    },
+    {
+      "slug": "hrms",
+      "title": "HRMS — Backend & Frontend",
+      "tagline": "Full-stack HR management system",
+      "icon": "fa-solid fa-users-cog",
+      "featured": false,
+      "description": "Full-stack Human Resource Management System covering employee, payroll, and attendance workflows through a React frontend, RESTful backend services, and MongoDB-based data management.",
+      "tech": ["Full Stack", "React.js", "MongoDB", "JavaScript", "REST API"],
+      "url": "https://github.com/Har-dik25/hrms-backend",
+      "extraLinks": [
+        { "label": "Backend", "url": "https://github.com/Har-dik25/hrms-backend" },
+        { "label": "Frontend", "url": "https://github.com/Har-dik25/hrms-frontend" }
+      ],
+      "caseStudy": {
+        "problem": "Small teams need a lightweight HR system without enterprise bloat.",
+        "solution": "Modular full-stack build: React frontend, REST backend, MongoDB persistence.",
+        "impact": "Covers employee, payroll, and attendance in a clean, maintainable codebase.",
+        "highlights": [
+          "Modular React + REST split",
+          "MongoDB persistence",
+          "Two production-ready repos"
+        ]
+      }
+    },
+    {
+      "slug": "ums-replica",
+      "title": "UMS Replica",
+      "tagline": "University management system",
+      "icon": "fa-solid fa-university",
+      "featured": false,
+      "description": "Full-stack University Management System replica with modules for students, faculty, courses, and administrative workflows. Developed a responsive React frontend integrated with MongoDB.",
+      "tech": ["Full Stack", "React.js", "MongoDB", "JavaScript"],
+      "url": "https://github.com/Har-dik25/UMS-replica",
+      "caseStudy": {
+        "problem": "Universities need unified tooling across students, faculty, and admin.",
+        "solution": "Responsive React frontend with MongoDB-backed modules for each persona.",
+        "impact": "A reusable UMS foundation that can be extended per institution.",
+        "highlights": [
+          "Multi-role workflows",
+          "Responsive React UI",
+          "MongoDB integration"
+        ]
+      }
+    }
+  ]
+}

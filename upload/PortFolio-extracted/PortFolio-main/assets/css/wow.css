@@ -1,0 +1,264 @@
+/* ============================================================
+   wow.css — playground, constellation, voice intro, day-in-life
+   ============================================================ */
+
+/* ---- Code Playground ---- */
+.pg-lead, .constellation-lead {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 6px 0 18px;
+}
+.pg-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.pg-tab {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: all .2s;
+}
+.pg-tab.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+.pg-box {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0 12px 12px 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.pg-side { display: flex; flex-direction: column; min-height: 0; }
+.pg-pane-header {
+  background: var(--card-2);
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+}
+#pg-editor {
+  width: 100%;
+  height: 220px;
+  background: #0d0e16;
+  color: #e8e9ef;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 12px;
+  border: none;
+  resize: vertical;
+  outline: none;
+  white-space: pre;
+  tab-size: 2;
+}
+#pg-output {
+  background: #050610;
+  color: #4ade80;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  padding: 12px 14px;
+  min-height: 120px;
+  max-height: 220px;
+  overflow: auto;
+  white-space: pre-wrap;
+  margin: 0;
+}
+.pg-controls {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--card-2);
+}
+.pg-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .2s;
+}
+.pg-btn:hover { border-color: var(--accent); color: var(--accent); }
+.pg-btn.primary {
+  background: var(--accent);
+  color: #0a0b10;
+  border-color: var(--accent);
+}
+.pg-btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.pg-snippets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: 12px auto 0;
+  max-width: 880px;
+}
+.pg-snippet {
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.pg-snippet:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---- Constellation ---- */
+.constellation-wrap {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  height: 460px;
+  background: radial-gradient(ellipse at center, var(--card-2) 0%, var(--bg) 75%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+#constellation-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+#constellation-canvas:active { cursor: grabbing; }
+.constellation-info {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  background: rgba(22, 24, 36, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--border-hi);
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-width: 160px;
+}
+.ci-name { font-weight: 700; font-size: 14px; color: var(--text); }
+.ci-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.constellation-fallback {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* ---- Voice intro card ---- */
+.voice-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.voice-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0a0b10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.voice-meta { flex: 1; min-width: 0; }
+.voice-title { font-weight: 600; font-size: 14px; }
+.voice-sub { color: var(--muted); font-size: 12px; }
+.voice-card audio {
+  height: 32px;
+  max-width: 240px;
+}
+
+/* ---- Day in the life ---- */
+.dayinlife {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 28px;
+}
+.dayinlife::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
+}
+.dil-item {
+  position: relative;
+  padding: 8px 0 22px;
+}
+.dil-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.dil-time { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 12px; }
+.dil-title { font-weight: 600; font-size: 15px; margin: 2px 0 4px; }
+.dil-desc { color: var(--muted); font-size: 13px; }
+
+/* ---- Project AI summary (auto) ---- */
+.ai-summary {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--card-2);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-style: italic;
+}
+.ai-summary::before {
+  content: '✦ AI summary';
+  display: block;
+  font-style: normal;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 600px) {
+  .constellation-wrap { height: 360px; }
+  .voice-card { flex-direction: column; text-align: center; }
+  .voice-card audio { width: 100%; }
+}

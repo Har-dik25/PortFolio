@@ -1,0 +1,72 @@
+{
+  "categories": [
+    {
+      "id": "ai-ml",
+      "title": "AI / Machine Learning",
+      "icon": "fa-solid fa-brain",
+      "skills": [
+        { "name": "Large Language Models", "level": 88, "years": 1.5 },
+        { "name": "NLP (BERT, RAG, Prompt Eng.)", "level": 90, "years": 2 },
+        { "name": "Scikit-learn", "level": 85, "years": 2.5 },
+        { "name": "TensorFlow", "level": 78, "years": 2 },
+        { "name": "PyTorch", "level": 80, "years": 1.5 },
+        { "name": "Retrieval-Augmented Generation", "level": 85, "years": 1 }
+      ]
+    },
+    {
+      "id": "languages",
+      "title": "Languages",
+      "icon": "fa-brands fa-python",
+      "skills": [
+        { "name": "Python", "level": 92, "years": 4 },
+        { "name": "JavaScript", "level": 80, "years": 2.5 },
+        { "name": "SQL", "level": 82, "years": 3 }
+      ]
+    },
+    {
+      "id": "backend",
+      "title": "Backend",
+      "icon": "fa-solid fa-server",
+      "skills": [
+        { "name": "FastAPI", "level": 88, "years": 2 },
+        { "name": "Flask", "level": 80, "years": 1.5 },
+        { "name": "REST APIs", "level": 90, "years": 3 },
+        { "name": "Node.js", "level": 72, "years": 1.5 },
+        { "name": "JWT Auth", "level": 80, "years": 1 }
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "Databases",
+      "icon": "fa-solid fa-database",
+      "skills": [
+        { "name": "MongoDB", "level": 85, "years": 2 },
+        { "name": "MySQL", "level": 80, "years": 2 },
+        { "name": "PostgreSQL", "level": 75, "years": 1 },
+        { "name": "Vector Databases (ChromaDB)", "level": 82, "years": 1 }
+      ]
+    },
+    {
+      "id": "frontend",
+      "title": "Frontend",
+      "icon": "fa-solid fa-laptop-code",
+      "skills": [
+        { "name": "React.js", "level": 82, "years": 2 },
+        { "name": "HTML / CSS", "level": 88, "years": 4 },
+        { "name": "JavaScript (ES6+)", "level": 80, "years": 2.5 },
+        { "name": "Tailwind CSS", "level": 75, "years": 1 }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "Tools & DevOps",
+      "icon": "fa-solid fa-tools",
+      "skills": [
+        { "name": "Git / GitHub", "level": 90, "years": 3 },
+        { "name": "Docker", "level": 75, "years": 1 },
+        { "name": "Postman", "level": 85, "years": 2 },
+        { "name": "Linux", "level": 75, "years": 2 }
+      ]
+    }
+  ]
+}

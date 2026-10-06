@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Hardik — Portfolio Admin</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+  <div class="admin-shell" id="admin-shell">
+    <header class="admin-header">
+      <div class="admin-logo">
+        <i class="fa-solid fa-shield-halved"></i> Portfolio Admin
+      </div>
+      <div class="admin-user" id="admin-user">
+        <span id="admin-username"></span>
+        <button id="admin-logout" class="admin-btn small">Sign out</button>
+      </div>
+    </header>
+
+    <!-- Login screen -->
+    <div class="admin-login" id="admin-login">
+      <form class="admin-login-card" id="admin-login-form">
+        <h2><i class="fa-solid fa-lock"></i> Sign in</h2>
+        <p class="muted">Basic auth credentials (set via <code>PORTFOLIO_ADMIN_USER</code> / <code>PORTFOLIO_ADMIN_PASS</code> env vars).</p>
+        <label>Username
+          <input type="text" name="username" required autocomplete="username">
+        </label>
+        <label>Password
+          <input type="password" name="password" required autocomplete="current-password">
+        </label>
+        <button type="submit" class="admin-btn">Sign in</button>
+        <div class="admin-err" id="admin-err"></div>
+      </form>
+    </div>
+
+    <!-- Dashboard -->
+    <main class="admin-dashboard" id="admin-dashboard" hidden>
+      <div class="admin-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total views</div>
+          <div class="kpi-value" id="kpi-total">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Today</div>
+          <div class="kpi-value" id="kpi-today">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Unique sessions</div>
+          <div class="kpi-value" id="kpi-unique">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Resume downloads</div>
+          <div class="kpi-value" id="kpi-resume">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Newsletter subs</div>
+          <div class="kpi-value" id="kpi-news">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Chat messages</div>
+          <div class="kpi-value" id="kpi-chat">—</div>
+        </div>
+      </div>
+
+      <section class="admin-panel">
+        <h3>Views by day (last 30)</h3>
+        <div class="chart" id="chart-days"></div>
+      </section>
+
+      <div class="admin-cols">
+        <section class="admin-panel">
+          <h3>Top countries</h3>
+          <div class="bar-list" id="list-countries"></div>
+        </section>
+        <section class="admin-panel">
+          <h3>Devices</h3>
+          <div class="bar-list" id="list-devices"></div>
+        </section>
+        <section class="admin-panel">
+          <h3>Top paths</h3>
+          <div class="bar-list" id="list-paths"></div>
+        </section>
+      </div>
+
+      <section class="admin-panel">
+        <h3>Recent contact form submissions</h3>
+        <div class="table-wrap">
+          <table class="admin-table" id="table-contacts">
+            <thead><tr><th>When</th><th>Name</th><th>Email</th><th>Message</th><th>Delivered</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "phrases": [
+    { "text": "Building with AI", "icon": "fa-solid fa-robot" },
+    { "text": "Crafting LLM Pipelines", "icon": "fa-solid fa-brain" },
+    { "text": "Deploying Neural Networks", "icon": "fa-solid fa-network-wired" },
+    { "text": "Architecting RAG Systems", "icon": "fa-solid fa-database" },
+    { "text": "Shipping Full-Stack AI", "icon": "fa-solid fa-code" }
+  ],
+  "rotator": [
+    "building an AI agent framework",
+    "reading <em>Designing Data-Intensive Applications</em>",
+    "listening to lo-fi hip hop",
+    "learning about agentic RAG patterns",
+    "shipping a portfolio v2 with backend"
+  ]
+}

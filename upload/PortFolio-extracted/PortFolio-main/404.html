@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5b342">
+    <title>404 — Signal Lost | Hardik</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --bg: #0a0b10;
+            --bg-2: #11131c;
+            --card: #161824;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hi: rgba(255, 255, 255, 0.16);
+            --text: #e8e9ef;
+            --muted: #9499a8;
+            --accent: #f5b342;
+            --accent-2: #ff8a3d;
+            --accent-glow: rgba(245, 179, 66, 0.15);
+            --node-color: rgba(245, 179, 66, 0.6);
+            --node-line: rgba(245, 179, 66, 0.15);
+        }
+
+        body.light-mode {
+            --bg: #f4f6f8;
+            --bg-2: #ffffff;
+            --card: #ffffff;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-hi: rgba(0, 0, 0, 0.15);
+            --text: #11131c;
+            --muted: #64748b;
+            --accent: #4f46e5;
+            --accent-2: #9333ea;
+            --accent-glow: rgba(79, 70, 229, 0.1);
+            --node-color: rgba(79, 70, 229, 0.5);
+            --node-line: rgba(79, 70, 229, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color .4s ease, color .4s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, var(--accent-glow) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--accent-glow) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #neural-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        body.light-mode #neural-canvas {
+            opacity: 0.2
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all .2s;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .glitch {
+            font-size: clamp(96px, 18vw, 160px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -4px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            position: relative;
+            animation: glitch 4s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 95%, 100% { transform: translate(0); filter: none; }
+            96% { transform: translate(-3px, 1px); filter: hue-rotate(20deg); }
+            97% { transform: translate(2px, -1px); filter: hue-rotate(-20deg); }
+            98% { transform: translate(-1px, 2px); }
+            99% { transform: translate(1px, -2px); }
+        }
+
+        h1 {
+            font-size: clamp(24px, 5vw, 32px);
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+
+        p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all .25s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0b10;
+            border: none;
+        }
+
+        body.light-mode .btn-primary {
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-2);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border-hi);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .terminal-hint {
+            margin-top: 36px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--muted);
+            text-align: left;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .terminal-hint .cmd {
+            color: var(--accent);
+        }
+
+        .terminal-hint .out {
+            color: var(--text);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glitch {
+                animation: none;
+            }
+            #neural-canvas {
+                display: none;
+            }
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle Theme" aria-label="Toggle dark/light mode">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <main class="container">
+        <div class="glitch" aria-hidden="true">404</div>
+        <h1>Signal Lost</h1>
+        <p>The page you're looking for has drifted into the void. Maybe a mistyped URL, maybe a broken link — either way, the AI couldn't find it.</p>
+        <div class="actions">
+            <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <a href="https://github.com/Har-dik25" target="_blank" rel="noopener" class="btn btn-secondary"><i
+                    class="fab fa-github"></i> GitHub</a>
+        </div>
+        <div class="terminal-hint" aria-hidden="true">
+            <span class="cmd">$</span> locate --missing
+            <br>
+            <span class="out">// route not found in knowledge base</span>
+            <br>
+            <span class="cmd">$</span> redirect --home
+        </div>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+        // Lightweight neural canvas (same vibe as main site)
+        (function initNeuralCanvas() {
+            const canvas = document.getElementById('neural-canvas');
+            const ctx = canvas.getContext('2d');
+            const NODE_COUNT = 35;
+            const MAX_DIST = 120;
+            let nodes = [];
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            for (let i = 0; i < NODE_COUNT; i++) {
+                nodes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const style = getComputedStyle(document.body);
+                const nodeColor = style.getPropertyValue('--node-color').trim();
+                const lineColor = style.getPropertyValue('--node-line').trim();
+
+                nodes.forEach(n => {
+                    n.x += n.vx;
+                    n.y += n.vy;
+                    if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+                    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+                    n.x = Math.max(0, Math.min(canvas.width, n.x));
+                    n.y = Math.max(0, Math.min(canvas.height, n.y));
+
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+                    ctx.fillStyle = nodeColor;
+                    ctx.fill();
+                });
+
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < MAX_DIST) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.strokeStyle = lineColor.replace(/0\.\d+/, `${0.3 * (1 - dist / MAX_DIST)}`);
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
+</body>
+
+</html>
