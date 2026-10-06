@@ -281,3 +281,34 @@ Work Log:
 
 Stage Summary:
 - 3D animated photo avatar added to hero (desktop), pairing with the terminal console. Mobile gracefully falls back to console-only. Photo served from /hardik-avatar.jpg.
+
+---
+Task ID: PORTFOLIO-UPDATE-5-R3F-3D-SCENE
+Agent: main
+Task: Build real 3D animated desk scene with React Three Fiber (Option 2) for hero; move flat photo avatar to About section with 3D glass frame + rim light.
+
+Work Log:
+- Installed: three@0.186.1, @react-three/fiber@9.8.1, @react-three/drei@10.7.9, @react-three/postprocessing@3.1.3.
+- Built src/components/topo-waves.tsx — animated SVG topographic/contour-line background (14 wavy paths with flowing stroke-dashoffset + drift), purple→cyan→amber gradient stroke, radial vignette.
+- Built src/components/desk-scene-3d.tsx — real WebGL 3D scene via R3F:
+  • Monitor: RoundedBox body + stand + emissive screen plane + Html overlay rendering a syntax-highlighted Python code editor (torch/transformers imports) as a texture
+  • PCTower: glass-side-panel box (meshPhysicalMaterial w/ transmission) containing 3 RGBFan components — each with spinning blades (useFrame rotation), color-cycling emissive material (RGB sine waves), torus ring, center hub; plus power button glow + RGB edge strip
+  • Keyboard: RoundedBox base + 70 individual key meshes with purple emissive glow
+  • Mouse: capsule geometry + cyan scroll-wheel glow
+  • Desk: plane with metalness 0.5
+  • Particles: 40 floating points with upward drift animation
+  • ParallaxRig: useFrame lerps pointer.x/y to rotate the whole scene group (mouse parallax)
+  • Float wrapper (drei): idle float motion
+  • Lighting: ambient 0.18 + purple spotLight (key, upper-left) + cyan pointLight (fill, lower-right) + pink pointLight (rim, near PC)
+  • ContactShadows under the desk
+  • Environment preset="night"
+  • Postprocessing: EffectComposer with Bloom (intensity 0.9, mipmapBlur) + ChromaticAberration + Vignette
+- Built src/components/hero-scene-3d.tsx — wrapper that lazy-loads DeskScene3D via next/dynamic (ssr:false) with a spinner fallback; wraps it in a rounded card with TopoWaves bg + radial purple/cyan glow + corner UI chrome (scene.live badge, webgl·r3f tag, "move cursor to orbit" hint).
+- Updated src/components/sections/hero.tsx — replaced Avatar3D with HeroScene3D on the right; kept HeroConsole full-width below. Removed avatar-3d import (photo no longer in hero).
+- Rebuilt src/components/sections/about.tsx — added a 3D glass-framed photo on the left: TiltCard (14° max) with rim-light glow (radial purple+cyan blur behind), color-grade overlay (screen blend), bottom info bar (name + title + availability pulse badge). Photo served from /hardik-avatar.jpg. Bio + 3 pillar cards moved to the right column.
+- Lint clean. Dev server compiles with no errors (only harmless THREE.Clock/PCFSoftShadowMap deprecation warnings). Agent Browser + VLM verified: 3D scene renders with monitor+RGB PC+keyboard+mouse, Python code on screen, cinematic purple/cyan/pink lighting + bloom, real 3D (not flat image), canvas 515×556, mouse parallax events dispatch, mobile renders correctly. VLM rated hero 8.5/10.
+
+Stage Summary:
+- Hero now shows a REAL 3D animated developer desk scene (React Three Fiber + Three.js + postprocessing bloom) — matches the reference aesthetic.
+- Photo moved to About section as a 3D glass-framed, rim-lit, tilt-on-hover element (no longer the flat tilted photo the user disliked).
+- Topographic wave background + cinematic 3-point lighting + RGB cycling fans + floating particles + bloom/vignette/chromatic aberration postprocessing all live.
