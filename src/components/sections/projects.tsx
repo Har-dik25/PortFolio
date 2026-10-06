@@ -55,7 +55,7 @@ export function Projects() {
           description="A mix of applied AI systems and full-stack builds. Hover any card to flip it and see the technical details. Group collaborations are marked with a badge."
         />
 
-        {/* Featured showcase — large cards with images */}
+        {/* Featured showcase — large 3D tilt cards (no images) */}
         <div className="mt-10 grid lg:grid-cols-2 gap-5 sm:gap-6">
           {featured.map((p, i) => (
             <motion.div
@@ -103,7 +103,7 @@ export function Projects() {
           ))}
         </div>
 
-        {/* 3D flip cards grid */}
+        {/* 3D flip cards grid (no images) */}
         <motion.div layout className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           <AnimatePresence mode="popLayout">
             {filteredOthers.map((p, i) => (
@@ -125,7 +125,7 @@ export function Projects() {
   );
 }
 
-/* ---------- Featured card (large, with image + 3D tilt) ---------- */
+/* ---------- Featured card (large, 3D tilt + glow, no image) ---------- */
 function FeaturedCard({ project: p }: { project: typeof projects[number] }) {
   const ref = React.useRef<HTMLDivElement>(null);
   const [glare, setGlare] = React.useState({ x: 50, y: 50, o: 0 });
@@ -164,31 +164,23 @@ function FeaturedCard({ project: p }: { project: typeof projects[number] }) {
           background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, oklch(1 0 0 / 0.18), transparent 45%)`,
         }}
       />
+      {/* glow */}
+      <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* project image */}
-      {p.image && (
-        <div className="relative h-40 overflow-hidden">
-          <img
-            src={p.image}
-            alt={p.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            draggable={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-          <div className="absolute left-4 top-4 grid size-12 place-items-center rounded-2xl bg-primary/15 text-primary backdrop-blur border border-primary/20">
+      <div className="relative p-6 sm:p-7">
+        <div className="flex items-start justify-between gap-3">
+          <div className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
             <DynamicIcon name={p.icon} className="size-6" />
           </div>
-          <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground shadow-lg">
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             <Star className="size-3 fill-current" />
             Featured
           </span>
         </div>
-      )}
 
-      <div className="relative p-6">
-        <h3 className="text-xl font-semibold tracking-tight">{p.title}</h3>
+        <h3 className="mt-5 text-xl font-semibold tracking-tight">{p.title}</h3>
         <p className="mt-1 text-sm text-primary font-medium">{p.tagline}</p>
-        <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+        <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-4">
           {p.description}
         </p>
 
@@ -231,13 +223,13 @@ function FeaturedCard({ project: p }: { project: typeof projects[number] }) {
   );
 }
 
-/* ---------- Flip card (3D flip on hover, with image on front) ---------- */
+/* ---------- Flip card (3D flip on hover, no image) ---------- */
 function FlipCard({ project: p }: { project: typeof projects[number] }) {
   const [flipped, setFlipped] = React.useState(false);
 
   return (
     <div
-      className="relative h-80 cursor-pointer"
+      className="relative h-72 cursor-pointer"
       style={{ perspective: 1000 }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
@@ -251,71 +243,52 @@ function FlipCard({ project: p }: { project: typeof projects[number] }) {
       >
         {/* Front */}
         <div
-          className="glass-card glow-border absolute inset-0 flex flex-col rounded-2xl overflow-hidden"
+          className="glass-card glow-border absolute inset-0 flex flex-col rounded-2xl p-5"
           style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
-          {/* image header (if available) */}
-          {p.image ? (
-            <div className="relative h-24 overflow-hidden">
-              <img
-                src={p.image}
-                alt={p.title}
-                className="h-full w-full object-cover"
-                draggable={false}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-              <div className="absolute left-3 top-3 grid size-8 place-items-center rounded-lg bg-primary/15 text-primary backdrop-blur border border-primary/20">
-                <DynamicIcon name={p.icon} className="size-4" />
-              </div>
+          <div className="flex items-start justify-between">
+            <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
+              <DynamicIcon name={p.icon} className="size-5" />
             </div>
-          ) : (
-            <div className="flex items-start justify-between p-5 pb-0">
-              <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
-                <DynamicIcon name={p.icon} className="size-5" />
-              </div>
-              <ArrowUpRight className="size-4 text-muted-foreground/60" />
-            </div>
-          )}
-
-          <div className="flex flex-1 flex-col p-4">
-            <div className="flex items-start justify-between gap-2">
-              {!p.image && <div />}
+            <div className="flex items-center gap-1.5">
               {p.collaboration && (
                 <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-primary">
                   <Users2 className="size-2.5" />
                   Group
                 </span>
               )}
+              <ArrowUpRight className="size-4 text-muted-foreground/60" />
             </div>
+          </div>
 
-            <h3 className="mt-1 font-semibold tracking-tight leading-snug">
-              {p.title}
-            </h3>
-            <p className="mt-0.5 text-xs text-primary font-medium">{p.tagline}</p>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">
-              {p.description}
-            </p>
+          <h3 className="mt-4 font-semibold tracking-tight leading-snug">
+            {p.title}
+          </h3>
+          <p className="mt-1 text-xs text-primary font-medium">{p.tagline}</p>
+          <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            {p.description}
+          </p>
 
-            <div className="mt-auto pt-2 flex flex-wrap gap-1.5">
-              {p.tech.slice(0, 3).map((t) => (
-                <Badge
-                  key={t}
-                  variant="secondary"
-                  className="font-mono text-[10px] font-normal"
-                >
-                  {t}
-                </Badge>
-              ))}
-              {p.tech.length > 3 && (
-                <Badge variant="outline" className="font-mono text-[10px] font-normal">
-                  +{p.tech.length - 3}
-                </Badge>
-              )}
-            </div>
+          <div className="mt-auto pt-3 flex flex-wrap gap-1.5">
+            {p.tech.slice(0, 4).map((t) => (
+              <Badge
+                key={t}
+                variant="secondary"
+                className="font-mono text-[10px] font-normal"
+              >
+                {t}
+              </Badge>
+            ))}
+            {p.tech.length > 4 && (
+              <Badge variant="outline" className="font-mono text-[10px] font-normal">
+                +{p.tech.length - 4}
+              </Badge>
+            )}
+          </div>
 
-            <div className="mt-2 text-right font-mono text-[9px] text-muted-foreground/50 uppercase tracking-wider">
-              hover · flip
-            </div>
+          {/* hint to flip */}
+          <div className="absolute bottom-3 right-4 font-mono text-[9px] text-muted-foreground/50 uppercase tracking-wider">
+            hover · flip
           </div>
         </div>
 

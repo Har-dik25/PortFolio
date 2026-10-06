@@ -425,3 +425,25 @@ Stage Summary:
 - Education: REBUILT with count-up animations + pulsing timeline nodes + summary stats.
 - Section transitions added between every section (scroll-reveal + gradient dividers).
 - 8 AI images generated + integrated (6 project thumbnails + 2 section accents).
+
+---
+Task ID: PORTFOLIO-UPDATE-11
+Agent: main
+Task: Remove code terminal from hero (add AI pipeline flow), rebuild Skills (bento grid), remove project images, remove accent images.
+
+Work Log:
+- Removed CodeTerminal from hero → built new AIPipelineFlow component (src/components/ai-pipeline-flow.tsx): a unique animated "AI Pipeline" diagram card showing data flowing through 4 nodes (Data → Embed → Model → Output). Each node has an icon + pulsing ring. Connection paths are curved SVG with animated particles traveling along them (motion.circle + mpath). Footer stats: latency <20ms, accuracy 94.2%, uptime 99.9%. "live flow" pulsing badge. 4 floating accent dots around the card. No photo/image.
+- Rebuilt Skills section (src/components/sections/skills.tsx): removed radial graph + skills-accent image. New bento-grid layout: first card spans 2 cols for variety, each card has a header (icon + title + skill count) and skill rows. Each skill row has a mini circular ProgressRing (animated stroke-dashoffset count-up on scroll) with the proficiency number inside, plus a shimmer bar on hover. 3D tilt cards with glass-card. No background image.
+- Rebuilt Projects section (src/components/sections/projects.tsx): removed ALL thumbnail images from featured cards + flip cards. Featured cards now show icon badge + Featured badge + text content only. Flip cards show icon + text only. Kept filter tabs (All/Solo/Group) + 3D flip animation + glass-card style.
+- Removed contact-accent image from Contact section.
+- Removed `image` fields from all 6 projects in portfolio-data.ts.
+- Deleted unused image files: /public/projects/* (6 thumbnails), /public/skills-accent.png, /public/contact-accent.png, /public/hardik-avatar.jpg, /public/hardik-3d-style{1,2,3}.png. Public folder now only has logo.svg + robots.txt.
+- Deleted unused component files: avatar-3d.tsx, ai-core-3d.tsx, code-terminal.tsx, hero-3d-cube.tsx, hero-console.tsx, hero-scene-3d.tsx, desk-scene-3d.tsx, topo-waves.tsx, training-dashboard.tsx.
+- Lint clean. Dev server running, 0 errors, 0 hydration mismatches. VLM verified: hero pipeline flow (4 nodes + particles + stats, no terminal, no photo), skills bento grid (progress rings, no radial graph, no bg image), projects (no thumbnails, clean icon+text cards).
+
+Stage Summary:
+- Hero: code terminal REMOVED → unique AI Pipeline flow diagram (animated particles, 4 nodes, stats).
+- Skills: REBUILT as bento grid with mini progress rings (no radial graph, no accent image).
+- Projects: ALL images REMOVED (featured + flip cards now icon+text only).
+- Accent images: skills-accent + contact-accent REMOVED.
+- Cleaned up 9 unused component files + 11 unused image files.

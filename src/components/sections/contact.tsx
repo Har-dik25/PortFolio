@@ -48,13 +48,6 @@ export function Contact() {
       />
       <div className="mesh-blob mesh-blob-purple float-slow" style={{ width: 320, height: 320, top: "15%", left: "-7%" }} />
       <div className="mesh-blob mesh-blob-cyan float-slow" style={{ width: 300, height: 300, bottom: "10%", right: "-6%", animationDelay: "2s" }} />
-      {/* contact accent image */}
-      <img
-        src="/contact-accent.png"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-96 object-cover opacity-10 rounded-full blur-2xl"
-      />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader

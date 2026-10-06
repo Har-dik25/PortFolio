@@ -417,7 +417,6 @@ export const projects: Project[] = [
     tagline: "Open-source AI medical copilot (internship project)",
     icon: "Stethoscope",
     featured: true,
-    image: "/projects/medinote.png",
     description:
       "MediMate is an open-source, zero-cost AI medical copilot that listens to doctor-patient conversations and synthesizes structured SOAP notes, suggests ICD-10 codes, recommends diagnostics, and flags drug interactions using RAG grounded in multi-regional clinical guidelines (NICE, CDC, EMA, WHO). It runs HuggingFace Whisper locally for privacy-preserving transcription, with Llama 3 via Groq, LangChain orchestration, and a local ChromaDB vector store of authoritative clinical guidelines. Built during my Applied AI internship at Futurense.",
     tech: ["React", "Vite", "FastAPI", "LangChain", "ChromaDB", "Whisper", "Llama 3"],
@@ -434,7 +433,6 @@ export const projects: Project[] = [
     tagline: "GIS decision-support across 673K+ villages",
     icon: "HeartPulse",
     featured: true,
-    image: "/projects/rural-healthcare.png",
     description:
       "National-scale decision-support platform diagnosing rural healthcare access gaps across 36 states/UTs, 640 districts, and 673,638 villages using a composite Access Gap Index (AGI) and a peer-reviewed 2SFCA spatial accessibility model. Exposes 12 interactive Streamlit/Plotly modules — geospatial gap maps, infra-vs-staffing 4-quadrant diagnostics, a PM-ABHIM budget optimizer, NFHS-5 outcome correlations, and a 673k-village drilldown — backed by a SQLite warehouse built from MoHFW RHS, Census, NFHS-5, and OSRM travel data. Grounded in Lancet/BMJ Global Health methodology with 16/16 passing tests.",
     tech: ["Python", "Streamlit", "Plotly", "SQLite", "pandas", "OSRM", "2SFCA"],
@@ -451,7 +449,6 @@ export const projects: Project[] = [
     tagline: "Zero-LLM extractive legal intelligence engine",
     icon: "Scale",
     featured: false,
-    image: "/projects/samvidhan-ai.png",
     description:
       "Samvidhan AI (LegalMind) is a deterministic, zero-LLM extractive legal intelligence engine for the Indian legal corpus — covering BNS/BNSS/BSA 2023, the Constitution of India, IPC/CrPC, and landmark Supreme Court precedents across 3,840+ statutory chunks. It uses hybrid dense (ChromaDB) + sparse (BM25) retrieval fused with Section-Boosted Reciprocal Rank Fusion and a cross-encoder reranker, then synthesizes verbatim statutory answers (0% hallucination) in <0.02s via Server-Sent Events streaming to a React/Vite workspace with interactive IPC↔BNS / CrPC↔BNSS / IEA↔BSA transmuters and knowledge graphs.",
     tech: ["Python", "FastAPI", "React", "Vite", "ChromaDB", "BM25", "Sentence-Transformers", "SQLite"],
@@ -468,7 +465,6 @@ export const projects: Project[] = [
     tagline: "Explainable BERT + BiLSTM ensemble",
     icon: "Newspaper",
     featured: false,
-    image: "/projects/fake-news.png",
     description:
       "TruthLens AI is a production-grade fake-news detection platform combining a hybrid ensemble of BERT (contextual) and BiLSTM with scaled dot-product self-attention (sequential), augmented with classical TF-IDF, POS-ratio, and VADER sentiment features, calibrated at 60% BERT / 40% BiLSTM weighting. Trained on the WELFake dataset (72,134 articles), it ships with a FastAPI backend, a glassmorphic frontend with attention-heatmap visualizations for explainability, and full Docker Compose deployment.",
     tech: ["PyTorch", "BERT", "BiLSTM", "NLTK", "scikit-learn", "FastAPI", "Docker"],
@@ -485,7 +481,6 @@ export const projects: Project[] = [
     tagline: "Zero-LLM rule-based e-commerce agent (NexusDesk)",
     icon: "ShoppingCart",
     featured: false,
-    image: "/projects/shopwave.png",
     description:
       "A rule-based (zero-LLM) autonomous support resolution agent for the NexusDesk e-commerce platform that processes 20 customer tickets concurrently (8 workers, ~0.13s total) using a 9-tool toolkit, with each ticket requiring ≥3 chained tool calls (fetch → verify → act → reply). It classifies tickets into 8 categories with urgency/flag detection (social engineering, VIP exceptions), resolves refunds/cancellations/replacements, escalates ambiguous cases, and emits a complete audit log. Pure Python 3.10+ standard library — no external dependencies, no API keys, no .env files.",
     tech: ["Python 3.10+", "ThreadPoolExecutor", "threading", "Concurrency"],
@@ -502,7 +497,6 @@ export const projects: Project[] = [
     tagline: "News-vector correlation + Signal Desk console",
     icon: "TrendingUp",
     featured: false,
-    image: "/projects/market-sentiment.png",
     description:
       "An end-to-end data engineering and applied-ML platform that ingests live financial news from RSS / SEC EDGAR / FNSPID / NSE feeds, embeds articles into 384-dim SentenceTransformer vectors, indexes them in Qdrant, and statistically tests whether news-sentiment shifts lead or lag equity price moves via ±5-day cross-correlation with p-values and regime classification. Pairs a FastAPI backend (semantic search, evidence traceability) with a Next.js 'Signal Desk' trading console and a HistGradientBoosting predictor fusing technical indicators (RSI/MACD/Bollinger) with sentiment signals across 25+ tickers.",
     tech: ["Python", "FastAPI", "Qdrant", "SentenceTransformers", "scikit-learn", "Next.js", "Docker"],
