@@ -1,15 +1,20 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? (isProd ? "/PortFolio" : "");
+
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* config options here */
+  output: "export",
+  basePath: basePath ? basePath : undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+  images: {
+    unoptimized: true,
+  },
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   reactStrictMode: false,
 };
 
 export default nextConfig;
+
