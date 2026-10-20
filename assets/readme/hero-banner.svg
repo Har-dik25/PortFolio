@@ -1,0 +1,128 @@
+<svg width="920" height="420" viewBox="0 0 920 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="920" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#080C16" />
+      <stop offset="50%" stop-color="#0A1124" />
+      <stop offset="100%" stop-color="#060913" />
+    </linearGradient>
+    <linearGradient id="cyanBlueBar" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="orbitGlow" x1="500" y1="100" x2="850" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.05" />
+    </linearGradient>
+    <radialGradient id="centerCoreGlow" cx="670" cy="210" r="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45" />
+      <stop offset="60%" stop-color="#1E40AF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#0B132B" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Container Box -->
+  <rect x="1" y="1" width="918" height="418" rx="20" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Subtle Star field -->
+  <circle cx="50" cy="40" r="1" fill="#475569" opacity="0.6"/>
+  <circle cx="120" cy="180" r="1.5" fill="#38BDF8" opacity="0.4"/>
+  <circle cx="390" cy="60" r="1" fill="#94A3B8" opacity="0.5"/>
+  <circle cx="480" cy="20" r="1.5" fill="#38BDF8" opacity="0.7"/>
+  <circle cx="430" cy="380" r="1" fill="#475569" opacity="0.4"/>
+  <circle cx="880" cy="50" r="1" fill="#94A3B8" opacity="0.5"/>
+  <circle cx="890" cy="340" r="1.5" fill="#38BDF8" opacity="0.6"/>
+
+  <!-- Ambient Glow Behind Diagram -->
+  <circle cx="670" cy="210" r="140" fill="url(#centerCoreGlow)"/>
+
+  <!-- Left Content -->
+  <!-- Accent Line -->
+  <rect x="52" y="105" width="4" height="125" rx="2" fill="url(#cyanBlueBar)"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <!-- Title -->
+    <text x="74" y="142" fill="#FFFFFF" font-size="40" font-weight="800" letter-spacing="-0.5">Hardik</text>
+    <text x="74" y="188" fill="#FFFFFF" font-size="40" font-weight="800" letter-spacing="-0.5">Choudhary</text>
+    
+    <!-- Subtitle -->
+    <text x="74" y="224" fill="#38BDF8" font-size="19" font-weight="600" letter-spacing="-0.2">AI and data systems engineer</text>
+
+    <!-- Description -->
+    <text x="74" y="258" fill="#94A3B8" font-size="14.5" font-weight="400">From messy source data to decisions</text>
+    <text x="74" y="280" fill="#94A3B8" font-size="14.5" font-weight="400">people can act on: pipelines, retrieval,</text>
+    <text x="74" y="302" fill="#94A3B8" font-size="14.5" font-weight="400">models, and auditable agents.</text>
+
+    <!-- Degree / University -->
+    <text x="74" y="352" fill="#64748B" font-size="12.5" font-family="'SF Mono', Menlo, Consolas, Monaco, monospace">B.Tech CSE, AI and Data Engineering</text>
+    <text x="74" y="372" fill="#64748B" font-size="12.5" font-family="'SF Mono', Menlo, Consolas, Monaco, monospace">Lovely Professional University</text>
+  </g>
+
+  <!-- Right Isometric Diagram -->
+  <g transform="translate(670, 210)">
+    <!-- Orbital Rings -->
+    <ellipse cx="0" cy="0" rx="175" ry="90" fill="none" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6"/>
+    <ellipse cx="0" cy="0" rx="125" ry="62" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.8"/>
+
+    <!-- Central Floating Diamond Platform -->
+    <!-- Lower shadow/layer -->
+    <path d="M 0 50 L 90 5 L 0 -40 L -90 5 Z" fill="#1E293B" opacity="0.7"/>
+    <path d="M 0 55 L 90 10 L 90 5 L 0 50 Z" fill="#0F172A"/>
+    <path d="M 0 55 L -90 10 L -90 5 L 0 50 Z" fill="#090E17"/>
+
+    <!-- Upper glowing layer -->
+    <path d="M 0 35 L 75 -5 L 0 -45 L -75 -5 Z" fill="#0D9488" opacity="0.35"/>
+    <path d="M 0 35 L 75 -5 L 0 -45 L -75 -5 Z" fill="none" stroke="#38BDF8" stroke-width="1.5"/>
+
+    <!-- Center Glowing Cube -->
+    <g transform="translate(0, -10)">
+      <!-- Top Face -->
+      <path d="M 0 -24 L 26 -10 L 0 4 L -26 -10 Z" fill="#67E8F9"/>
+      <!-- Right Face -->
+      <path d="M 0 4 L 26 -10 L 26 22 L 0 36 Z" fill="#0284C7"/>
+      <!-- Left Face -->
+      <path d="M 0 4 L -26 -10 L -26 22 L 0 36 Z" fill="#0369A1"/>
+    </g>
+
+    <!-- Node 1: Top (model) -->
+    <g transform="translate(0, -115)">
+      <path d="M 0 -16 L 18 -6 L 0 4 L -18 -6 Z" fill="#C084FC"/>
+      <path d="M 0 4 L 18 -6 L 18 16 L 0 26 Z" fill="#9333EA"/>
+      <path d="M 0 4 L -18 -6 L -18 16 L 0 26 Z" fill="#7E22CE"/>
+      <text x="0" y="-22" text-anchor="middle" fill="#C084FC" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600">model</text>
+    </g>
+
+    <!-- Node 2: Left (ingest) -->
+    <g transform="translate(-155, 10)">
+      <path d="M 0 -15 L 17 -5 L 0 5 L -17 -5 Z" fill="#38BDF8"/>
+      <path d="M 0 5 L 17 -5 L 17 15 L 0 25 Z" fill="#0284C7"/>
+      <path d="M 0 5 L -17 -5 L -17 15 L 0 25 Z" fill="#0369A1"/>
+      <text x="0" y="42" text-anchor="middle" fill="#38BDF8" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600">ingest</text>
+    </g>
+
+    <!-- Node 3: Right (retrieve) -->
+    <g transform="translate(155, 10)">
+      <path d="M 0 -15 L 17 -5 L 0 5 L -17 -5 Z" fill="#34D399"/>
+      <path d="M 0 5 L 17 -5 L 17 15 L 0 25 Z" fill="#059669"/>
+      <path d="M 0 5 L -17 -5 L -17 15 L 0 25 Z" fill="#047857"/>
+      <text x="0" y="42" text-anchor="middle" fill="#34D399" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600">retrieve</text>
+    </g>
+
+    <!-- Node 4: Bottom (act) -->
+    <g transform="translate(0, 100)">
+      <path d="M 0 -16 L 18 -6 L 0 4 L -18 -6 Z" fill="#FBBF24"/>
+      <path d="M 0 4 L 18 -6 L 18 16 L 0 26 Z" fill="#D97706"/>
+      <path d="M 0 4 L -18 -6 L -18 16 L 0 26 Z" fill="#B45309"/>
+      <text x="36" y="16" fill="#FBBF24" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600">act</text>
+    </g>
+
+    <!-- Micro Orbiting Packets -->
+    <circle cx="-120" cy="-45" r="4" fill="#67E8F9" filter="url(#glow)"/>
+    <circle cx="120" cy="-45" r="3.5" fill="#34D399" filter="url(#glow)"/>
+    <circle cx="50" cy="65" r="4" fill="#FBBF24" filter="url(#glow)"/>
+    <circle cx="-50" cy="-75" r="3" fill="#C084FC" filter="url(#glow)"/>
+  </g>
+</svg>

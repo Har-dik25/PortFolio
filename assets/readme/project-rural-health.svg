@@ -1,0 +1,108 @@
+<svg width="860" height="240" viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="859" height="239" rx="16" fill="#080D1A" stroke="#1E293B"/>
+
+  <!-- Left: 3D Graphic (SQLite Warehouse cylinder + Isometric Voxel Map) -->
+  <g transform="translate(130, 120)">
+    <!-- SQLite Cylinder -->
+    <g transform="translate(-70, 0)">
+      <!-- Shadow -->
+      <ellipse cx="0" cy="45" rx="36" ry="14" fill="#0F172A" opacity="0.6"/>
+      <!-- Body -->
+      <path d="M -36 10 L -36 38 A 36 14 0 0 0 36 38 L 36 10 Z" fill="#0284C7"/>
+      <!-- Top Cap -->
+      <ellipse cx="0" cy="10" rx="36" ry="14" fill="#38BDF8"/>
+      <!-- Cut lines -->
+      <path d="M -36 24 A 36 14 0 0 0 36 24" fill="none" stroke="#0369A1" stroke-width="1.5"/>
+      <text x="0" y="65" text-anchor="middle" fill="#64748B" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11">SQLite warehouse</text>
+    </g>
+
+    <!-- Connector Stream -->
+    <path d="M -20 20 C 15 20, 20 0, 50 0" fill="none" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="10" cy="15" r="3" fill="#67E8F9"/>
+    <circle cx="30" cy="5" r="3" fill="#67E8F9"/>
+
+    <!-- 3D Voxel Grid Map (Pink, Amber, Cyan voxel blocks) -->
+    <g transform="translate(140, 0)">
+      <!-- Isometric Base Plate -->
+      <path d="M 0 55 L 120 -5 L 0 -65 L -120 -5 Z" fill="#0B132B" stroke="#1E293B" stroke-width="1.5"/>
+
+      <!-- Voxel Block 1 (Cyan) -->
+      <g transform="translate(-40, -10)">
+        <path d="M 0 -12 L 14 -5 L 0 2 L -14 -5 Z" fill="#38BDF8"/>
+        <path d="M 0 2 L 14 -5 L 14 12 L 0 19 Z" fill="#0284C7"/>
+        <path d="M 0 2 L -14 -5 L -14 12 L 0 19 Z" fill="#0369A1"/>
+      </g>
+      <!-- Voxel Block 2 (Rose/Pink) -->
+      <g transform="translate(-10, -25)">
+        <path d="M 0 -16 L 16 -7 L 0 2 L -16 -7 Z" fill="#FB7185"/>
+        <path d="M 0 2 L 16 -7 L 16 18 L 0 27 Z" fill="#E11D48"/>
+        <path d="M 0 2 L -16 -7 L -16 18 L 0 27 Z" fill="#BE123C"/>
+      </g>
+      <!-- Voxel Block 3 (Amber/Yellow) -->
+      <g transform="translate(20, -15)">
+        <path d="M 0 -14 L 15 -6 L 0 2 L -15 -6 Z" fill="#FCD34D"/>
+        <path d="M 0 2 L 15 -6 L 15 16 L 0 24 Z" fill="#F59E0B"/>
+        <path d="M 0 2 L -15 -6 L -15 16 L 0 24 Z" fill="#D97706"/>
+      </g>
+      <!-- Voxel Block 4 (Purple) -->
+      <g transform="translate(-15, 10)">
+        <path d="M 0 -12 L 14 -5 L 0 2 L -14 -5 Z" fill="#C084FC"/>
+        <path d="M 0 2 L 14 -5 L 14 14 L 0 21 Z" fill="#9333EA"/>
+        <path d="M 0 2 L -14 -5 L -14 14 L 0 21 Z" fill="#7E22CE"/>
+      </g>
+      <!-- Voxel Block 5 (Cyan high) -->
+      <g transform="translate(15, 5)">
+        <path d="M 0 -15 L 15 -6 L 0 2 L -15 -6 Z" fill="#67E8F9"/>
+        <path d="M 0 2 L 15 -6 L 15 18 L 0 26 Z" fill="#0284C7"/>
+        <path d="M 0 2 L -15 -6 L -15 18 L 0 26 Z" fill="#0369A1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right: 2-column Tech Badges -->
+  <g transform="translate(520, 28)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">
+    <!-- Row 1 -->
+    <!-- Python -->
+    <rect x="0" y="0" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="18" r="8" fill="#3B82F6"/>
+    <text x="38" y="23" fill="#E2E8F0">Python</text>
+
+    <!-- pandas -->
+    <rect x="160" y="0" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="18" r="8" fill="#6366F1"/>
+    <text x="198" y="23" fill="#E2E8F0">pandas</text>
+
+    <!-- Row 2 -->
+    <!-- NumPy -->
+    <rect x="0" y="48" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="66" r="8" fill="#0284C7"/>
+    <text x="38" y="71" fill="#E2E8F0">NumPy</text>
+
+    <!-- SQLite -->
+    <rect x="160" y="48" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="66" r="8" fill="#0EA5E9"/>
+    <text x="198" y="71" fill="#E2E8F0">SQLite</text>
+
+    <!-- Row 3 -->
+    <!-- Streamlit -->
+    <rect x="0" y="96" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="114" r="8" fill="#FF4B4B"/>
+    <text x="38" y="119" fill="#E2E8F0">Streamlit</text>
+
+    <!-- Plotly -->
+    <rect x="160" y="96" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="114" r="8" fill="#8B5CF6"/>
+    <text x="198" y="119" fill="#E2E8F0">Plotly</text>
+
+    <!-- Row 4 -->
+    <!-- GIS maps -->
+    <rect x="0" y="144" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="162" r="8" fill="#10B981"/>
+    <text x="38" y="167" fill="#E2E8F0">GIS maps</text>
+
+    <!-- pytest -->
+    <rect x="160" y="144" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="162" r="8" fill="#0284C7"/>
+    <text x="198" y="167" fill="#E2E8F0">pytest</text>
+  </g>
+</svg>

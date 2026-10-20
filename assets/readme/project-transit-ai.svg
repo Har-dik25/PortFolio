@@ -1,0 +1,96 @@
+<svg width="860" height="240" viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="859" height="239" rx="16" fill="#080D1A" stroke="#1E293B"/>
+
+  <!-- Left: Road with Rain Cloud, Bus, and 3D SHAP Bar Chart -->
+  <g transform="translate(130, 115)">
+    <!-- Road Surface (Dark Isometric Highway) -->
+    <path d="M -100 25 L 80 -45 L 115 -35 L -65 35 Z" fill="#1E293B" stroke="#334155"/>
+    <line x1="-80" y1="28" x2="95" y2="-40" stroke="#FFFFFF" stroke-dasharray="10 8" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Rain Cloud -->
+    <g transform="translate(-50, -45)">
+      <path d="M -30 0 A 15 15 0 0 1 -10 -15 A 22 22 0 0 1 20 -12 A 16 16 0 0 1 35 5 A 12 12 0 0 1 20 18 L -25 18 A 12 12 0 0 1 -30 0 Z" fill="#2563EB" opacity="0.85"/>
+      <!-- Rain drops -->
+      <line x1="-15" y1="24" x2="-22" y2="38" stroke="#38BDF8" stroke-width="1.5"/>
+      <line x1="0" y1="24" x2="-7" y2="38" stroke="#38BDF8" stroke-width="1.5"/>
+      <line x1="15" y1="24" x2="8" y2="38" stroke="#38BDF8" stroke-width="1.5"/>
+    </g>
+
+    <!-- Bus Vehicle on Road -->
+    <g transform="translate(0, -5)">
+      <!-- Chassis -->
+      <path d="M -22 6 L 14 -8 L 22 -5 L -14 9 Z" fill="#F59E0B"/>
+      <!-- Roof/Cabin -->
+      <path d="M -22 -6 L 14 -20 L 22 -17 L -14 -3 Z" fill="#FCD34D"/>
+      <!-- Side -->
+      <path d="M -22 6 L -22 -6 L -14 -3 L -14 9 Z" fill="#D97706"/>
+      <path d="M -14 9 L -14 -3 L 22 -17 L 22 -5 Z" fill="#F59E0B"/>
+      <!-- Windows -->
+      <path d="M -10 4 L -10 0 L 0 -4 L 0 0 Z" fill="#0284C7"/>
+      <path d="M 4 -2 L 4 -6 L 14 -10 L 14 -6 Z" fill="#0284C7"/>
+    </g>
+
+    <!-- 3D SHAP Bar Chart -->
+    <g transform="translate(150, 10)">
+      <!-- Column 1 (Pink) -->
+      <path d="M -14 10 L -4 6 L -4 -16 L -14 -12 Z" fill="#E11D48"/>
+      <path d="M -4 6 L 6 10 L 6 -12 L -4 -16 Z" fill="#FB7185"/>
+      <path d="M -14 -12 L -4 -16 L 6 -12 L -4 -8 Z" fill="#FECDD3"/>
+
+      <!-- Column 2 (Amber) -->
+      <path d="M 12 16 L 22 12 L 22 -30 L 12 -26 Z" fill="#D97706"/>
+      <path d="M 22 12 L 32 16 L 32 -26 L 22 -30 Z" fill="#F59E0B"/>
+      <path d="M 12 -26 L 22 -30 L 32 -26 L 22 -22 Z" fill="#FDE68A"/>
+
+      <!-- Column 3 (Cyan) -->
+      <path d="M 38 22 L 48 18 L 48 -44 L 38 -40 Z" fill="#0284C7"/>
+      <path d="M 48 18 L 58 22 L 58 -40 L 48 -44 Z" fill="#38BDF8"/>
+      <path d="M 38 -40 L 48 -44 L 58 -40 L 48 -36 Z" fill="#BAE6FD"/>
+
+      <text x="22" y="44" text-anchor="middle" fill="#64748B" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10.5">SHAP: what drives a delay</text>
+    </g>
+  </g>
+
+  <!-- Right: 2-column Tech Badges -->
+  <g transform="translate(520, 28)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">
+    <!-- Python -->
+    <rect x="0" y="0" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="18" r="8" fill="#3B82F6"/>
+    <text x="38" y="23" fill="#E2E8F0">Python</text>
+
+    <!-- pandas -->
+    <rect x="160" y="0" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="18" r="8" fill="#6366F1"/>
+    <text x="198" y="23" fill="#E2E8F0">pandas</text>
+
+    <!-- scikit-learn -->
+    <rect x="0" y="48" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="66" r="8" fill="#F97316"/>
+    <text x="38" y="71" fill="#E2E8F0">scikit-learn</text>
+
+    <!-- SHAP -->
+    <rect x="160" y="48" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="66" r="8" fill="#EC4899"/>
+    <text x="198" y="71" fill="#E2E8F0">SHAP</text>
+
+    <!-- Parquet -->
+    <rect x="0" y="96" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="114" r="8" fill="#0EA5E9"/>
+    <text x="38" y="119" fill="#E2E8F0">Parquet</text>
+
+    <!-- Streamlit -->
+    <rect x="160" y="96" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="114" r="8" fill="#FF4B4B"/>
+    <text x="198" y="119" fill="#E2E8F0">Streamlit</text>
+
+    <!-- Plotly -->
+    <rect x="0" y="144" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="22" cy="162" r="8" fill="#8B5CF6"/>
+    <text x="38" y="167" fill="#E2E8F0">Plotly</text>
+
+    <!-- Docker -->
+    <rect x="160" y="144" width="145" height="36" rx="10" fill="#0D1627" stroke="#1E293B"/>
+    <circle cx="182" cy="162" r="8" fill="#0284C7"/>
+    <text x="198" y="167" fill="#E2E8F0">Docker</text>
+  </g>
+</svg>

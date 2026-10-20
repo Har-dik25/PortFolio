@@ -1,0 +1,31 @@
+<svg width="430" height="150" viewBox="0 0 430 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="429" height="149" rx="14" fill="#090E1A" stroke="#1E293B"/>
+  <path d="M 16 0.5 L 200 0.5" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- 3D Stacked Layers Icon -->
+  <g transform="translate(58, 76)">
+    <!-- Layer 3 (Bottom) -->
+    <path d="M 0 24 L 38 4 L 0 -16 L -38 4 Z" fill="#0F172A" stroke="#1E293B" stroke-width="1.2"/>
+    <path d="M 0 30 L 38 10 L 38 4 L 0 24 Z" fill="#0B132B"/>
+    <path d="M 0 30 L -38 10 L -38 4 L 0 24 Z" fill="#080D1E"/>
+
+    <!-- Layer 2 (Middle) -->
+    <path d="M 0 10 L 38 -10 L 0 -30 L -38 -10 Z" fill="#0284C7" stroke="#38BDF8" stroke-width="1.2"/>
+    <path d="M 0 16 L 38 -4 L 38 -10 L 0 10 Z" fill="#0369A1"/>
+    <path d="M 0 16 L -38 -4 L -38 -10 L 0 10 Z" fill="#075985"/>
+
+    <!-- Layer 1 (Top) -->
+    <path d="M 0 -4 L 38 -24 L 0 -44 L -38 -24 Z" fill="#38BDF8" stroke="#7DD3FC" stroke-width="1.2"/>
+    <path d="M 0 2 L 38 -18 L 38 -24 L 0 -4 Z" fill="#0EA5E9"/>
+    <path d="M 0 2 L -38 -18 L -38 -24 L 0 -4 Z" fill="#0284C7"/>
+  </g>
+
+  <!-- Content -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <text x="125" y="44" fill="#FFFFFF" font-size="18" font-weight="700">Data engineering</text>
+    <text x="125" y="70" fill="#94A3B8" font-size="12.5" font-weight="400">Ingestion and cleaning pipelines,</text>
+    <text x="125" y="90" fill="#94A3B8" font-size="12.5" font-weight="400">SQLite and Parquet stores, make-</text>
+    <text x="125" y="110" fill="#94A3B8" font-size="12.5" font-weight="400">driven rebuilds and pytest-backed</text>
+    <text x="125" y="130" fill="#94A3B8" font-size="12.5" font-weight="400">validation.</text>
+  </g>
+</svg>
