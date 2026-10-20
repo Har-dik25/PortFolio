@@ -42,7 +42,6 @@ yarn-error.log*
 next-env.d.ts
 local-*
 .claude
-.z-ai-config
 *.log
 dev.log
 dev.out.log
@@ -52,3 +51,14 @@ prompt
 server.log
 # Skills directory
 /skills/
+/scratch/
+/tool-results/
+/download/
+/*.zip
+/worklog.md
+/.zscripts/
+/Caddyfile
+/mini-services/
+/examples/
+/tests/
+AGENTS.md

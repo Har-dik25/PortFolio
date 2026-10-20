@@ -1,0 +1,40 @@
+<svg width="430" height="150" viewBox="0 0 430 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="429" height="149" rx="14" fill="#090E1A" stroke="#1E293B"/>
+  <path d="M 16 0.5 L 200 0.5" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- 3D Neural / Hybrid Retrieval Cubes Icon -->
+  <g transform="translate(60, 80)">
+    <!-- Base grid -->
+    <path d="M 0 24 L 38 4 L 0 -16 L -38 4 Z" fill="#042F2E" stroke="#0D9488" stroke-width="1"/>
+    
+    <!-- Main Center Cube -->
+    <g transform="translate(0, -6)">
+      <path d="M 0 -14 L 14 -6 L 0 2 L -14 -6 Z" fill="#5EEAD4"/>
+      <path d="M 0 2 L 14 -6 L 14 10 L 0 18 Z" fill="#14B8A6"/>
+      <path d="M 0 2 L -14 -6 L -14 10 L 0 18 Z" fill="#0F766E"/>
+    </g>
+
+    <!-- Satellite Cube 1 -->
+    <g transform="translate(-20, -18)">
+      <path d="M 0 -8 L 8 -3 L 0 2 L -8 -3 Z" fill="#2DD4BF"/>
+      <path d="M 0 2 L 8 -3 L 8 6 L 0 11 Z" fill="#0D9488"/>
+      <path d="M 0 2 L -8 -3 L -8 6 L 0 11 Z" fill="#115E59"/>
+    </g>
+
+    <!-- Satellite Cube 2 -->
+    <g transform="translate(20, -18)">
+      <path d="M 0 -8 L 8 -3 L 0 2 L -8 -3 Z" fill="#2DD4BF"/>
+      <path d="M 0 2 L 8 -3 L 8 6 L 0 11 Z" fill="#0D9488"/>
+      <path d="M 0 2 L -8 -3 L -8 6 L 0 11 Z" fill="#115E59"/>
+    </g>
+  </g>
+
+  <!-- Content -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <text x="125" y="44" fill="#FFFFFF" font-size="18" font-weight="700">Applied AI</text>
+    <text x="125" y="70" fill="#94A3B8" font-size="12.5" font-weight="400">Hybrid retrieval, cross-encoder</text>
+    <text x="125" y="90" fill="#94A3B8" font-size="12.5" font-weight="400">reranking, vector search and</text>
+    <text x="125" y="110" fill="#94A3B8" font-size="12.5" font-weight="400">transformer text classification</text>
+    <text x="125" y="130" fill="#94A3B8" font-size="12.5" font-weight="400">with token-level explanations.</text>
+  </g>
+</svg>

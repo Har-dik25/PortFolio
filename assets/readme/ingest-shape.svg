@@ -1,0 +1,18 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(120, 95)">
+    <!-- Base Plate -->
+    <path d="M 0 45 L 80 10 L 0 -25 L -80 10 Z" fill="#0B132B" stroke="#1E293B" stroke-width="1.5"/>
+    <path d="M 0 53 L 80 18 L 80 10 L 0 45 Z" fill="#080D1D"/>
+    <path d="M 0 53 L -80 18 L -80 10 L 0 45 Z" fill="#050813"/>
+
+    <!-- Layer 2 -->
+    <path d="M 0 25 L 80 -10 L 0 -45 L -80 -10 Z" fill="#0284C7" stroke="#38BDF8" stroke-width="1.5"/>
+    <path d="M 0 33 L 80 -2 L 80 -10 L 0 25 Z" fill="#0369A1"/>
+    <path d="M 0 33 L -80 -2 L -80 -10 L 0 25 Z" fill="#075985"/>
+
+    <!-- Layer 3 (Top) -->
+    <path d="M 0 5 L 80 -30 L 0 -65 L -80 -30 Z" fill="#38BDF8" stroke="#7DD3FC" stroke-width="1.5"/>
+    <path d="M 0 13 L 80 -22 L 80 -30 L 0 5 Z" fill="#0EA5E9"/>
+    <path d="M 0 13 L -80 -22 L -80 -30 L 0 5 Z" fill="#0284C7"/>
+  </g>
+</svg>
